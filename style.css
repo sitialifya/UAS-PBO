@@ -107,3 +107,25 @@ footer {
     cursor: pointer;
 }
 
+.add-to-cart {
+    background-color: #8A4C55;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.add-to-cart:hover {
+    background-color: #7A3E4D;
+}
+
+.add-to-cart img {
+    width: 20px;
+    height: 20px;
+}
+
+
