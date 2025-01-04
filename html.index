@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penjualan Roti</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Toko Roti Aroma Bahagia</h1>
+        <p>Selamat Datang di Toko Roti Kami!<br>
+        Kami menjual berbagai macam roti segar dan lezat.</p>
+    </header>
+
+    <section id="produk">
+        <h2>Produk Kami</h2>
+        <div class="produk">
+            <div class="item">
+               <img src="images/spicy floss.jpg" alt="Spicy Floss">
+                <h3>Spicy Floss</h3>
+                <p>Rp12.500</p>
+                <button class="add-to-cart" data-name="Spicy Floss" data-price="12500">Tambah ke Keranjang</button>
+            </div>
+            <div class="item">
+                <img src="images/sausage diva.jpg" alt="Sausage Diva">
+                <h3>Sausage Diva</h3>
+                <p>Rp12.500</p>
+                <button class="add-to-cart" data-name="Sausage Diva" data-price="12500">Tambah ke Keranjang</button>
+            </div>
+            <div class="item">
+                <img src="images/floss roll.jpg" alt="Floss Roll">
+                <h3>Floss Roll</h3>
+                <p>Rp14.500</p>
+                <button class="add-to-cart" data-name="Floss Roll" data-price="14500">Tambah ke Keranjang</button>
+            </div>
+            <div class="item">
+                <img src="images/choco meises.jpg" alt="Choco Meises">
+                <h3>Choco Meises</h3>
+                <p>Rp12.500</p>
+                <button class="add-to-cart" data-name="Choco Meises" data-price="12500">Tambah ke Keranjang</button>
+            </div>
+            <div class="item">
+                <img src="images/rendang floss.jpg" alt="Rendang Floss">
+                <h3>Rendang Floss</h3>
+                <p>Rp12.500</p>
+                <button class="add-to-cart" data-name="Rendang Floss" data-price="12500">Tambah ke Keranjang</button>
+            </div>
+            <div class="item">
+                <img src="images/milky bun.jpg" alt="Milky Bun">
+                <h3>Milky Bun</h3>
+                <p>Rp9.000</p>
+                <button class="add-to-cart" data-name="Milky Bun" data-price="9000">Tambah ke Keranjang</button>
+            </div>
+            <div class="item">
+                <img src="images/coffee bun.jpg" alt="Coffee Bun">
+                <h3>Coffee Bun</h3>
+                <p>Rp12.000</p>
+                <button class="add-to-cart" data-name="Coffee Bun" data-price="12000">Tambah ke Keranjang</button>
+            </div>
+            <div class="item">
+                <img src="images/choco bun.jpg" alt="Choco Bun">
+                <h3>Choco Bun</h3>
+                <p>Rp9.000</p>
+                <button class="add-to-cart" data-name="Choco Bun" data-price="9000">Tambah ke Keranjang</button>
+            </div>
+            <div class="item">
+                <img src="images/sugar pillow.jpg" alt="Sugar Pillow">
+                <h3>Sugar Pillow</h3>
+                <p>Rp10.000</p>
+                <button class="add-to-cart" data-name="Sugar Pillow" data-price="10000">Tambah ke Keranjang</button>
+            </div>
+            <div class="item">
+                <img src="images/banana choco cheese.jpg" alt="Banana Choco Cheese">
+                <h3>Banana Choco Cheese</h3>
+                <p>Rp12.500</p>
+                <button class="add-to-cart" data-name="Banana Choco Cheese" data-price="12500">Tambah ke Keranjang</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="keranjang">
+        <h2>Keranjang Belanja</h2>
+        <ul id="cart-items">
+            <!-- Daftar produk yang ditambahkan ke keranjang akan muncul di sini -->
+        </ul>
+        <p>Total: Rp <span id="total">0</span></p>
+        <button id="bayar" style="background-color: #C06C84;">Bayar</button>
+    </section>
+
+    <footer>
+        <h2>Kontak Kami</h2>
+        <p>Email: tokorotiAromaBahagia@example.com</p>
+        <p>Telepon: +62 812 3456 7890</p>
+    </footer>
+
+    <div id="payment-modal" style="display: none;">
+        <h2>Pilih Metode Pembayaran</h2>
+        <button id="cash">Cash</button>
+        <button id="debit">Debit</button>
+        <button id="qris">QRIS</button>
+    </div>
+
+    <div id="receipt-modal" style="display: none;">
+        <h2>Struk Pembelian</h2>
+        <ul id="receipt-items"></ul>
+        <p>Total Pembayaran: Rp <span id="final-total"></span></p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
