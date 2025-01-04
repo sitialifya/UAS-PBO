@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EAE1E1; /* Background utama */
+    color: #333;
+}
+
+header {
+    background-color: #C06C84; /* Header */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+    text-align: center;
+}
+
+.produk {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.item {
+    background-color: #D5C3C3; /* Warna background item produk */
+    border: 1px solid #C06C84; /* Border item */
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+}
+
+.item img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #C06C84; /* Footer */
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+#keranjang {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f4f4f4;
+}
+
+#keranjang ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#keranjang ul li {
+    margin-bottom: 5px;
+}
+
+#bayar {
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#payment-modal, #receipt-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    z-index: 1000;
+}
+
+#payment-modal button, #receipt-modal button {
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
