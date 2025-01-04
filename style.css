@@ -98,3 +98,10 @@ footer {
     padding: 10px;
     cursor: pointer;
 }
+.item img {
+    max-width: 100%; /* Agar gambar responsif */
+    height: auto; /* Menjaga rasio tinggi dan lebar */
+    width: 150px; /* Setel lebar gambar produk sesuai dengan ukuran yang diinginkan */
+    border-radius: 5px;
+}
+
