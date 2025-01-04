@@ -53,14 +53,6 @@ section {
     border-radius: 5px;
 }
 
-.produk-item img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
 footer {
     background-color: #C06C84; /* Footer */
     color: white;
@@ -106,26 +98,3 @@ footer {
     padding: 10px;
     cursor: pointer;
 }
-
-.add-to-cart {
-    background-color: #8A4C55;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 14px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.add-to-cart:hover {
-    background-color: #7A3E4D;
-}
-
-.add-to-cart img {
-    width: 20px;
-    height: 20px;
-}
-
-
