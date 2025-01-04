@@ -53,6 +53,14 @@ section {
     border-radius: 5px;
 }
 
+.produk-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
 footer {
     background-color: #C06C84; /* Footer */
     color: white;
@@ -97,11 +105,5 @@ footer {
     margin-top: 10px;
     padding: 10px;
     cursor: pointer;
-}
-.item img {
-    max-width: 100%; /* Agar gambar responsif */
-    height: auto; /* Menjaga rasio tinggi dan lebar */
-    width: 150px; /* Setel lebar gambar produk sesuai dengan ukuran yang diinginkan */
-    border-radius: 5px;
 }
 
