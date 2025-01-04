@@ -18,61 +18,61 @@
         <h2>Produk Kami</h2>
         <div class="produk">
             <div class="item">
-               <img src="images/spicy floss.jpg" alt="Spicy Floss">
+               <img src="images/spicy floss.jpeg" alt="Spicy Floss">
                 <h3>Spicy Floss</h3>
                 <p>Rp12.500</p>
                 <button class="add-to-cart" data-name="Spicy Floss" data-price="12500">Tambah ke Keranjang</button>
             </div>
             <div class="item">
-                <img src="images/sausage diva.jpg" alt="Sausage Diva">
+                <img src="images/sausage diva.jpeg" alt="Sausage Diva">
                 <h3>Sausage Diva</h3>
                 <p>Rp12.500</p>
                 <button class="add-to-cart" data-name="Sausage Diva" data-price="12500">Tambah ke Keranjang</button>
             </div>
             <div class="item">
-                <img src="images/floss roll.jpg" alt="Floss Roll">
+                <img src="images/floss roll.jpeg" alt="Floss Roll">
                 <h3>Floss Roll</h3>
                 <p>Rp14.500</p>
                 <button class="add-to-cart" data-name="Floss Roll" data-price="14500">Tambah ke Keranjang</button>
             </div>
             <div class="item">
-                <img src="images/choco meises.jpg" alt="Choco Meises">
+                <img src="images/choco meises.jpeg" alt="Choco Meises">
                 <h3>Choco Meises</h3>
                 <p>Rp12.500</p>
                 <button class="add-to-cart" data-name="Choco Meises" data-price="12500">Tambah ke Keranjang</button>
             </div>
             <div class="item">
-                <img src="images/rendang floss.jpg" alt="Rendang Floss">
+                <img src="images/rendang floss.jpeg" alt="Rendang Floss">
                 <h3>Rendang Floss</h3>
                 <p>Rp12.500</p>
                 <button class="add-to-cart" data-name="Rendang Floss" data-price="12500">Tambah ke Keranjang</button>
             </div>
             <div class="item">
-                <img src="images/milky bun.jpg" alt="Milky Bun">
+                <img src="images/milky bun.jpeg" alt="Milky Bun">
                 <h3>Milky Bun</h3>
                 <p>Rp9.000</p>
                 <button class="add-to-cart" data-name="Milky Bun" data-price="9000">Tambah ke Keranjang</button>
             </div>
             <div class="item">
-                <img src="images/coffee bun.jpg" alt="Coffee Bun">
+                <img src="images/coffee bun.jpeg" alt="Coffee Bun">
                 <h3>Coffee Bun</h3>
                 <p>Rp12.000</p>
                 <button class="add-to-cart" data-name="Coffee Bun" data-price="12000">Tambah ke Keranjang</button>
             </div>
             <div class="item">
-                <img src="images/choco bun.jpg" alt="Choco Bun">
+                <img src="images/choco bun.jpeg" alt="Choco Bun">
                 <h3>Choco Bun</h3>
                 <p>Rp9.000</p>
                 <button class="add-to-cart" data-name="Choco Bun" data-price="9000">Tambah ke Keranjang</button>
             </div>
             <div class="item">
-                <img src="images/sugar pillow.jpg" alt="Sugar Pillow">
+                <img src="images/sugar pillow.jpeg" alt="Sugar Pillow">
                 <h3>Sugar Pillow</h3>
                 <p>Rp10.000</p>
                 <button class="add-to-cart" data-name="Sugar Pillow" data-price="10000">Tambah ke Keranjang</button>
             </div>
             <div class="item">
-                <img src="images/banana choco cheese.jpg" alt="Banana Choco Cheese">
+                <img src="images/banana choco cheese.jpeg" alt="Banana Choco Cheese">
                 <h3>Banana Choco Cheese</h3>
                 <p>Rp12.500</p>
                 <button class="add-to-cart" data-name="Banana Choco Cheese" data-price="12500">Tambah ke Keranjang</button>
