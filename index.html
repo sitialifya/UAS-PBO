@@ -6,8 +6,8 @@
     <title>Penjualan Roti</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
-<style>
-        /* Tambahkan gaya untuk ikon keranjang */
+    <style>
+        /* Gaya untuk ikon keranjang */
         #cart-icon {
             position: fixed;
             top: 20px;
@@ -50,7 +50,7 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 999;
         }
-    </style>  
+    </style>
 </head>
 <body>
     <header>
@@ -59,6 +59,18 @@
         Kami menjual berbagai macam roti segar dan lezat.</p>
     </header>
 
+     <!-- Login Section -->
+    <section id="login-section">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required><br>
+            <button type="submit">Login</button>
+        </form>
+    </section>
+    
     <section id="produk">
         <h2>Produk Kami</h2>
         <div class="produk">
@@ -160,20 +172,38 @@
         <p>Telepon: +62 812 3456 7890</p>
     </footer>
 
-   <!-- Modal untuk keranjang belanja -->
-    <div class="overlay" id="overlay"></div>
-    <div class="modal" id="cart-modal">
-        <h2>Keranjang Belanja</h2>
-        <ul id="cart-items">
-            <!-- Daftar produk yang ditambahkan ke keranjang akan muncul di sini -->
-        </ul>
-        <p>Total: Rp <span id="total">0</span></p>
-        <button id="bayar" aria-label="Proses pembayaran">Bayar</button>
-        <button id="close-modal" aria-label="Tutup modal">Tutup</button>
+    <div id="payment-modal" style="display: none;">
+        <h2>Pilih Metode Pembayaran</h2>
+        <button id="e-wallet">E-Wallet</button>
+        <button id="bank-transfer">Transfer Bank</button>
+        <button id="cod">COD</button>
+    </div>
+
+    <div id="receipt-modal" style="display: none;">
+        <h2>Struk Pembelian</h2>
+        <ul id="receipt-items"></ul>
+        <p>Total Pembayaran: Rp <span id="final-total"></span></p>
     </div>
 
     <script src="app.js"></script>
     <script>
-        const cart = [];
-        const cartItemsElement = document.getElementById('cart-items');
-        const totalElement = document.getElementById('total');
+        // Login functionality
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === "admin" && password === "1234") {
+                alert("Login berhasil!");
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('produk').style.display = 'block';
+                document.getElementById('keranjang').style.display = 'block';
+            } else {
+                alert("Username atau password salah!");
+            }
+        });
+
+        // Add more JS functionality for handling the cart and payment methods
+    </script>
+</body>
+</html>
