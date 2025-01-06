@@ -102,6 +102,15 @@
         <p>Telepon: +62 812 3456 7890</p>
     </footer>
 
+    <!-- In the payment modal, add a "Pay Now" button before showing the payment options -->
+<div id="payment-modal" class="modal">
+    <h2>Detail Belanja</h2>
+    <ul id="payment-items"></ul>
+    <p>Total: Rp <span id="payment-total"></span></p>
+    <button id="pay-now">Bayar Sekarang</button> <!-- New Pay Now button -->
+    <button id="close-payment">Kembali</button>
+</div>
+    
     <div id="payment-modal" class="modal">
         <h2>Metode Pembayaran</h2>
         <ul id="payment-items"></ul>
@@ -138,6 +147,26 @@
             }
         });
 
+        // Handle "Pay Now" button click
+    document.getElementById('pay-now').addEventListener('click', function() {
+        // Hide the payment details and show the payment method selection
+        document.getElementById('payment-modal').innerHTML = `
+            <h2>Metode Pembayaran</h2>
+            <ul id="payment-items"></ul>
+            <p>Total: Rp <span id="payment-total"></span></p>
+            <button id="e-wallet">E-Wallet</button>
+            <button id="bank-transfer">Transfer Bank</button>
+            <button id="cod">COD</button>
+            <button id="close-payment">Kembali</button>
+        `;
+        // Re-assign cart items and total to the new modal
+        document.getElementById('payment-items').innerHTML = document.getElementById('cart-items').innerHTML;
+        document.getElementById('payment-total').textContent = document.getElementById('total').textContent;
+
+        // Show payment method buttons
+        document.getElementById('payment-modal').style.display = 'block';
+    });
+        
         // Show payment modal when cart icon is clicked
         document.getElementById('cart-icon').addEventListener('click', function() {
             const cartItems = document.getElementById('cart-items').innerHTML;
