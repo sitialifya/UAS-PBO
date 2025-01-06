@@ -39,16 +39,31 @@
             margin-top: 10px;
         }
 
-        /* Gaya untuk overlay */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
+        /* Gaya untuk keranjang */
+        #keranjang {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        /* Gaya untuk item dalam keranjang */
+        #cart-items li {
+            margin-bottom: 5px;
+        }
+
+        /* Gaya untuk tombol */
+        button {
+            background-color: #C06C84;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #af5a72;
         }
     </style>
 </head>
@@ -58,9 +73,10 @@
         <p>Selamat Datang di Toko Roti Kami!<br>
         Kami menjual berbagai macam roti segar dan lezat.</p>
     </header>
-<div id="cart-icon" style="display: none;">
-    &#128722; <!-- Simbol keranjang belanja -->
-</div>
+    <div id="cart-icon" style="display: none;">
+        &#128722; <!-- Simbol keranjang belanja -->
+    </div>
+
     <!-- Login Section -->
     <section id="login-section">
         <h2>Login</h2>
@@ -73,6 +89,7 @@
         </form>
     </section>
 
+    <!-- Produk -->
     <section id="produk" style="display: none;">
         <h2>Produk Kami</h2>
         <div class="produk">
@@ -84,16 +101,18 @@
                     Tambah ke Keranjang
                 </button>
             </div>
-            <!-- Produk lainnya -->
+            <!-- Tambahkan produk lainnya -->
         </div>
     </section>
 
+    <!-- Keranjang -->
     <section id="keranjang" style="display: none;">
         <h2>Keranjang Belanja</h2>
         <ul id="cart-items">
             <!-- Daftar produk yang ditambahkan ke keranjang akan muncul di sini -->
         </ul>
         <p>Total: Rp <span id="total">0</span></p>
+        <button id="bayar-sekarang">Bayar Sekarang</button>
     </section>
 
     <footer>
@@ -102,6 +121,7 @@
         <p>Telepon: +62 812 3456 7890</p>
     </footer>
 
+    <!-- Modal Pembayaran -->
     <div id="payment-modal" class="modal">
         <h2>Metode Pembayaran</h2>
         <ul id="payment-items"></ul>
@@ -112,14 +132,6 @@
         <button id="close-payment">Kembali</button>
     </div>
 
-    <div id="receipt-modal" class="modal">
-        <h2>Struk Pembelian</h2>
-        <ul id="receipt-items"></ul>
-        <p>Total Pembayaran: Rp <span id="final-total"></span></p>
-        <button id="close-receipt">Kembali</button>
-    </div>
-
-    <script src="app.js"></script>
     <script>
         // Login functionality
         document.getElementById('login-form').addEventListener('submit', function(e) {
@@ -138,8 +150,29 @@
             }
         });
 
-        // Show payment modal when cart icon is clicked
-        document.getElementById('cart-icon').addEventListener('click', function() {
+        // Tambahkan produk ke keranjang
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const itemName = this.getAttribute('data-name');
+                const itemPrice = parseInt(this.getAttribute('data-price'));
+
+                const cartItems = document.getElementById('cart-items');
+                const totalElement = document.getElementById('total');
+                let total = parseInt(totalElement.textContent.replace(/\D/g, ''));
+
+                // Tambahkan produk ke daftar keranjang
+                const listItem = document.createElement('li');
+                listItem.textContent = `${itemName} - Rp${itemPrice.toLocaleString('id-ID')}`;
+                cartItems.appendChild(listItem);
+
+                // Perbarui total harga
+                total += itemPrice;
+                totalElement.textContent = total.toLocaleString('id-ID');
+            });
+        });
+
+        // Tampilkan modal pembayaran
+        document.getElementById('bayar-sekarang').addEventListener('click', function() {
             const cartItems = document.getElementById('cart-items').innerHTML;
             const total = document.getElementById('total').textContent;
 
@@ -152,51 +185,11 @@
             document.getElementById('payment-total').textContent = total;
             document.getElementById('payment-modal').style.display = 'block';
         });
-        // Handle payment method selection
-    document.getElementById('e-wallet').addEventListener('click', function() {
-        alert("Pembayaran berhasil melalui E-Wallet, Roti akan dikirim.");
-        document.getElementById('payment-modal').style.display = 'none';
-    });
 
-    document.getElementById('bank-transfer').addEventListener('click', function() {
-        alert("Pembayaran berhasil melalui Transfer Bank, Roti akan dikirim.");
-        document.getElementById('payment-modal').style.display = 'none';
-    });
-
-    document.getElementById('cod').addEventListener('click', function() {
-        alert("Pembayaran berhasil melalui COD, Roti akan dikirim.");
-        document.getElementById('payment-modal').style.display = 'none';
-    });
-
-        // Close payment modal
+        // Tutup modal pembayaran
         document.getElementById('close-payment').addEventListener('click', function() {
             document.getElementById('payment-modal').style.display = 'none';
         });
-
-        // Close receipt modal
-        document.getElementById('close-receipt').addEventListener('click', function() {
-            document.getElementById('receipt-modal').style.display = 'none';
-        });
-        // Fungsi untuk menambahkan produk ke keranjang
-document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', function() {
-        const itemName = this.getAttribute('data-name');
-        const itemPrice = parseInt(this.getAttribute('data-price'));
-
-        const cartItems = document.getElementById('cart-items');
-        const totalElement = document.getElementById('total');
-        let total = parseInt(totalElement.textContent);
-
-        // Tambahkan produk ke daftar keranjang
-        const listItem = document.createElement('li');
-        listItem.textContent = ${itemName} - Rp${itemPrice.toLocaleString('id-ID')};
-        cartItems.appendChild(listItem);
-
-        // Perbarui total harga
-        total += itemPrice;
-        totalElement.textContent = total.toLocaleString('id-ID');
-    });
-});
     </script>
 </body>
 </html>
