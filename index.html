@@ -158,22 +158,17 @@
         </div>
     </div>
 </section>
-
-
+<!-- Keranjang Section, Initially Hidden -->
     <section id="keranjang" style="display: none;">
         <h2>Keranjang Belanja</h2>
         <ul id="cart-items">
             <!-- Daftar produk yang ditambahkan ke keranjang akan muncul di sini -->
         </ul>
         <p>Total: Rp <span id="total">0</span></p>
+        <button id="pay-now">Bayar Sekarang</button>
     </section>
 
-    <footer>
-        <h2>Kontak Kami</h2>
-        <p>Email: <a href="mailto:tokorotiAromaBahagia@example.com">tokorotiAromaBahagia@example.com</a></p>
-        <p>Telepon: +62 812 3456 7890</p>
-    </footer>
-
+    <!-- Payment Modal -->
     <div id="payment-modal" class="modal">
         <h2>Metode Pembayaran</h2>
         <ul id="payment-items"></ul>
@@ -184,12 +179,19 @@
         <button id="close-payment">Kembali</button>
     </div>
 
+    <!-- Receipt Modal -->
     <div id="receipt-modal" class="modal">
         <h2>Struk Pembelian</h2>
         <ul id="receipt-items"></ul>
         <p>Total Pembayaran: Rp <span id="final-total"></span></p>
         <button id="close-receipt">Kembali</button>
     </div>
+
+    <footer>
+        <h2>Kontak Kami</h2>
+        <p>Email: <a href="mailto:tokorotiAromaBahagia@example.com">tokorotiAromaBahagia@example.com</a></p>
+        <p>Telepon: +62 812 3456 7890</p>
+    </footer>
 
     <script src="app.js"></script>
     <script>
@@ -210,8 +212,8 @@
             }
         });
 
-        // Show payment modal when cart icon is clicked
-        document.getElementById('cart-icon').addEventListener('click', function() {
+        // Show payment modal when "Bayar Sekarang" is clicked
+        document.getElementById('pay-now').addEventListener('click', function() {
             const cartItems = document.getElementById('cart-items').innerHTML;
             const total = document.getElementById('total').textContent;
 
@@ -224,21 +226,25 @@
             document.getElementById('payment-total').textContent = total;
             document.getElementById('payment-modal').style.display = 'block';
         });
+
         // Handle payment method selection
-    document.getElementById('e-wallet').addEventListener('click', function() {
-        alert("Pembayaran berhasil melalui E-Wallet, Roti akan dikirim.");
-        document.getElementById('payment-modal').style.display = 'none';
-    });
+        document.getElementById('e-wallet').addEventListener('click', function() {
+            alert("Pembayaran berhasil melalui E-Wallet, Roti akan dikirim.");
+            document.getElementById('payment-modal').style.display = 'none';
+            showReceipt();
+        });
 
-    document.getElementById('bank-transfer').addEventListener('click', function() {
-        alert("Pembayaran berhasil melalui Transfer Bank, Roti akan dikirim.");
-        document.getElementById('payment-modal').style.display = 'none';
-    });
+        document.getElementById('bank-transfer').addEventListener('click', function() {
+            alert("Pembayaran berhasil melalui Transfer Bank, Roti akan dikirim.");
+            document.getElementById('payment-modal').style.display = 'none';
+            showReceipt();
+        });
 
-    document.getElementById('cod').addEventListener('click', function() {
-        alert("Pembayaran berhasil melalui COD, Roti akan dikirim.");
-        document.getElementById('payment-modal').style.display = 'none';
-    });
+        document.getElementById('cod').addEventListener('click', function() {
+            alert("Pembayaran berhasil melalui COD, Roti akan dikirim.");
+            document.getElementById('payment-modal').style.display = 'none';
+            showReceipt();
+        });
 
         // Close payment modal
         document.getElementById('close-payment').addEventListener('click', function() {
@@ -249,26 +255,37 @@
         document.getElementById('close-receipt').addEventListener('click', function() {
             document.getElementById('receipt-modal').style.display = 'none';
         });
-        // Fungsi untuk menambahkan produk ke keranjang
-document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', function() {
-        const itemName = this.getAttribute('data-name');
-        const itemPrice = parseInt(this.getAttribute('data-price'));
 
-        const cartItems = document.getElementById('cart-items');
-        const totalElement = document.getElementById('total');
-        let total = parseInt(totalElement.textContent);
+        // Add products to cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const itemName = this.getAttribute('data-name');
+                const itemPrice = parseInt(this.getAttribute('data-price'));
 
-        // Tambahkan produk ke daftar keranjang
-        const listItem = document.createElement('li');
-        listItem.textContent = ${itemName} - Rp${itemPrice.toLocaleString('id-ID')};
-        cartItems.appendChild(listItem);
+                const cartItems = document.getElementById('cart-items');
+                const totalElement = document.getElementById('total');
+                let total = parseInt(totalElement.textContent);
 
-        // Perbarui total harga
-        total += itemPrice;
-        totalElement.textContent = total.toLocaleString('id-ID');
-    });
-});
+                // Add product to cart
+                const listItem = document.createElement('li');
+                listItem.textContent = `${itemName} - Rp${itemPrice.toLocaleString('id-ID')}`;
+                cartItems.appendChild(listItem);
+
+                // Update total price
+                total += itemPrice;
+                totalElement.textContent = total.toLocaleString('id-ID');
+            });
+        });
+
+        // Show receipt modal after payment
+        function showReceipt() {
+            const cartItems = document.getElementById('cart-items').innerHTML;
+            const total = document.getElementById('total').textContent;
+
+            document.getElementById('receipt-items').innerHTML = cartItems;
+            document.getElementById('final-total').textContent = total;
+            document.getElementById('receipt-modal').style.display = 'block';
+        }
     </script>
 </body>
-</html> 
+</html>
