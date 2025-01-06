@@ -87,22 +87,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// Login functionality
-document.getElementById('login-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    if (username === "admin" && password === "1234") {
-        alert("Login berhasil!");
-        document.getElementById('login-section').style.display = 'none';
-        document.getElementById('produk').style.display = 'block';
-        document.getElementById('keranjang').style.display = 'block';
-        document.getElementById('cart-icon').style.display = 'block';
-    } else {
-        alert("Username atau password salah!");
-    }
-});
 
 // Show payment modal when cart icon is clicked
 document.getElementById('cart-icon').addEventListener('click', function() {
