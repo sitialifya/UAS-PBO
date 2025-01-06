@@ -75,6 +75,82 @@ function showReceipt() {
 
     finalTotalElement.textContent = total.toLocaleString();
 }
+// Show payment modal when cart icon is clicked
+document.getElementById('cart-icon').addEventListener('click', function() {
+    const cartItems = document.getElementById('cart-items').innerHTML;
+    const total = document.getElementById('total').textContent;
+
+    if (cartItems.trim() === "") {
+        alert("Keranjang belanja kosong!");
+        return;
+    }
+
+    document.getElementById('payment-items').innerHTML = cartItems;
+    document.getElementById('payment-total').textContent = total;
+    document.getElementById('payment-modal').style.display = 'block';
+});
+
+// Handle payment method selection when "Bayar Sekarang" is clicked
+document.getElementById('pay-now').addEventListener('click', function() {
+    const paymentModal = document.getElementById('payment-modal');
+    paymentModal.style.display = 'none';
+    
+    // Display options for cash, transfer, or QRIS
+    const paymentMethod = prompt("Pilih metode pembayaran:\n1. Cash\n2. Transfer\n3. QRIS");
+    
+    if (paymentMethod === "1") {
+        // Show cash payment modal
+        document.getElementById('cash-payment-modal').style.display = 'block';
+    } else if (paymentMethod === "2" || paymentMethod === "3") {
+        // Show success message for transfer/QRIS
+        document.getElementById('transfer-qris-payment-modal').style.display = 'block';
+    } else {
+        alert("Metode pembayaran tidak valid.");
+    }
+});
+
+// Process cash payment
+document.getElementById('process-cash-payment').addEventListener('click', function() {
+    const receivedMoney = parseInt(document.getElementById('received-money').value);
+    const total = parseInt(document.getElementById('payment-total').textContent);
+    
+    if (isNaN(receivedMoney) || receivedMoney < total) {
+        alert("Jumlah uang yang diterima tidak cukup!");
+        return;
+    }
+
+    const change = receivedMoney - total;
+    document.getElementById('cash-change').textContent = `Kembalian: Rp ${change.toLocaleString('id-ID')}`;
+    document.getElementById('cash-change').style.display = 'block';
+    
+    // Hide the cash payment modal
+    setTimeout(() => {
+        document.getElementById('cash-payment-modal').style.display = 'none';
+        showReceipt();
+    }, 2000);
+});
+
+// Close cash payment modal
+document.getElementById('close-cash-payment').addEventListener('click', function() {
+    document.getElementById('cash-payment-modal').style.display = 'none';
+});
+
+// Close transfer / QRIS payment modal
+document.getElementById('close-transfer-qris').addEventListener('click', function() {
+    document.getElementById('transfer-qris-payment-modal').style.display = 'none';
+    showReceipt();
+});
+
+// Show receipt after successful payment
+function showReceipt() {
+    const cartItems = document.getElementById('cart-items').innerHTML;
+    const total = document.getElementById('total').textContent;
+
+    document.getElementById('receipt-items').innerHTML = cartItems;
+    document.getElementById('final-total').textContent = total;
+    document.getElementById('receipt-modal').style.display = 'block';
+}
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js')
