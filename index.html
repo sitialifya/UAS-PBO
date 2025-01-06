@@ -165,8 +165,12 @@
             <!-- Daftar produk yang ditambahkan ke keranjang akan muncul di sini -->
         </ul>
         <p>Total: Rp <span id="total">0</span></p>
-        <button id="pay-now">Bayar Sekarang</button>
     </section>
+
+    <!-- Cart Icon (Now used for Payment Modal) -->
+    <div id="cart-icon" aria-label="Buka Keranjang Belanja">
+        🛒
+    </div>
 
     <!-- Payment Modal -->
     <div id="payment-modal" class="modal">
@@ -212,8 +216,8 @@
             }
         });
 
-        // Show payment modal when "Bayar Sekarang" is clicked
-        document.getElementById('pay-now').addEventListener('click', function() {
+        // Show payment modal when cart icon is clicked
+        document.getElementById('cart-icon').addEventListener('click', function() {
             const cartItems = document.getElementById('cart-items').innerHTML;
             const total = document.getElementById('total').textContent;
 
