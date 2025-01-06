@@ -171,7 +171,7 @@
     <div id="cart-icon" aria-label="Buka Keranjang Belanja">
         🛒
     </div>
-
+    <script src="app.js"></script>
     <script>
         // Login functionality
         document.getElementById('login-form').addEventListener('submit', function(e) {
@@ -189,87 +189,106 @@
                 alert("Username atau password salah!");
             }
         });
+        <!-- Payment Modal -->
+<div id="payment-modal" class="modal">
+    <h2>Metode Pembayaran</h2>
+    <ul id="payment-items"></ul>
+    <p>Total: Rp <span id="payment-total"></span></p>
+    <button id="pay-now">Bayar Sekarang</button>
+    <button id="close-payment">Kembali</button>
+</div>
 
-        // Show payment modal when cart icon is clicked
-        document.getElementById('cart-icon').addEventListener('click', function() {
-            const cartItems = document.getElementById('cart-items').innerHTML;
-            const total = document.getElementById('total').textContent;
+<!-- Cash Payment Modal -->
+<div id="cash-payment-modal" class="modal">
+    <h2>Pembayaran Cash</h2>
+    <p>Masukkan uang yang diterima:</p>
+    <input type="number" id="received-money" placeholder="Uang yang diterima" required>
+    <button id="process-cash-payment">Proses Pembayaran</button>
+    <button id="close-cash-payment">Kembali</button>
+    <p id="cash-change" style="display: none;"></p>
+</div>
 
-            if (cartItems.trim() === "") {
-                alert("Keranjang belanja kosong!");
-                return;
-            }
+<!-- Transfer / QRIS Payment Modal -->
+<div id="transfer-qris-payment-modal" class="modal">
+    <h2>Pembayaran Berhasil</h2>
+    <p>Pembayaran telah berhasil melalui Transfer atau QRIS. Roti akan dikirim!</p>
+    <button id="close-transfer-qris">Tutup</button>
+</div>
+// Show payment modal when cart icon is clicked
+document.getElementById('cart-icon').addEventListener('click', function() {
+    const cartItems = document.getElementById('cart-items').innerHTML;
+    const total = document.getElementById('total').textContent;
 
-            document.getElementById('payment-items').innerHTML = cartItems;
-            document.getElementById('payment-total').textContent = total;
-            document.getElementById('payment-modal').style.display = 'block';
-        });
+    if (cartItems.trim() === "") {
+        alert("Keranjang belanja kosong!");
+        return;
+    }
 
-        // Handle payment method selection
-        document.getElementById('e-wallet').addEventListener('click', function() {
-            alert("Pembayaran berhasil melalui E-Wallet, Roti akan dikirim.");
-            document.getElementById('payment-modal').style.display = 'none';
-            showReceipt();
-        });
+    document.getElementById('payment-items').innerHTML = cartItems;
+    document.getElementById('payment-total').textContent = total;
+    document.getElementById('payment-modal').style.display = 'block';
+});
 
-        document.getElementById('bank-transfer').addEventListener('click', function() {
-            alert("Pembayaran berhasil melalui Transfer Bank, Roti akan dikirim.");
-            document.getElementById('payment-modal').style.display = 'none';
-            showReceipt();
-        });
+// Handle payment method selection when "Bayar Sekarang" is clicked
+document.getElementById('pay-now').addEventListener('click', function() {
+    const paymentModal = document.getElementById('payment-modal');
+    paymentModal.style.display = 'none';
+    
+    // Display options for cash, transfer, or QRIS
+    const paymentMethod = prompt("Pilih metode pembayaran:\n1. Cash\n2. Transfer\n3. QRIS");
+    
+    if (paymentMethod === "1") {
+        // Show cash payment modal
+        document.getElementById('cash-payment-modal').style.display = 'block';
+    } else if (paymentMethod === "2" || paymentMethod === "3") {
+        // Show success message for transfer/QRIS
+        document.getElementById('transfer-qris-payment-modal').style.display = 'block';
+    } else {
+        alert("Metode pembayaran tidak valid.");
+    }
+});
 
-        document.getElementById('cod').addEventListener('click', function() {
-            alert("Pembayaran berhasil melalui COD, Roti akan dikirim.");
-            document.getElementById('payment-modal').style.display = 'none';
-            showReceipt();
-        });
+// Process cash payment
+document.getElementById('process-cash-payment').addEventListener('click', function() {
+    const receivedMoney = parseInt(document.getElementById('received-money').value);
+    const total = parseInt(document.getElementById('payment-total').textContent);
+    
+    if (isNaN(receivedMoney) || receivedMoney < total) {
+        alert("Jumlah uang yang diterima tidak cukup!");
+        return;
+    }
 
-        // Close payment modal
-        document.getElementById('close-payment').addEventListener('click', function() {
-            document.getElementById('payment-modal').style.display = 'none';
-        });
+    const change = receivedMoney - total;
+    document.getElementById('cash-change').textContent = `Kembalian: Rp ${change.toLocaleString('id-ID')}`;
+    document.getElementById('cash-change').style.display = 'block';
+    
+    // Hide the cash payment modal
+    setTimeout(() => {
+        document.getElementById('cash-payment-modal').style.display = 'none';
+        showReceipt();
+    }, 2000);
+});
 
-        // Close receipt modal
-        document.getElementById('close-receipt').addEventListener('click', function() {
-            document.getElementById('receipt-modal').style.display = 'none';
-        });
+// Close cash payment modal
+document.getElementById('close-cash-payment').addEventListener('click', function() {
+    document.getElementById('cash-payment-modal').style.display = 'none';
+});
 
-        // Add products to cart
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const itemName = this.getAttribute('data-name');
-                const itemPrice = parseInt(this.getAttribute('data-price'));
+// Close transfer / QRIS payment modal
+document.getElementById('close-transfer-qris').addEventListener('click', function() {
+    document.getElementById('transfer-qris-payment-modal').style.display = 'none';
+    showReceipt();
+});
 
-                const cartItems = document.getElementById('cart-items');
-                const totalElement = document.getElementById('total');
-                let total = parseInt(totalElement.textContent);
+// Show receipt after successful payment
+function showReceipt() {
+    const cartItems = document.getElementById('cart-items').innerHTML;
+    const total = document.getElementById('total').textContent;
 
-                // Add product to cart
-                const listItem = document.createElement('li');
-                listItem.textContent = `${itemName} - Rp${itemPrice.toLocaleString('id-ID')}`;
-                cartItems.appendChild(listItem);
-
-                // Update total price
-                total += itemPrice;
-                totalElement.textContent = total.toLocaleString('id-ID');
-            });
-        });
-
-        // Show receipt modal after payment
-        function showReceipt() {
-            const cartItems = document.getElementById('cart-items').innerHTML;
-            const total = document.getElementById('total').textContent;
-
-            document.getElementById('receipt-items').innerHTML = cartItems;
-            document.getElementById('final-total').textContent = total;
-            document.getElementById('receipt-modal').style.display = 'block';
-        }
-    <footer>
-        <h2>Kontak Kami</h2>
-        <p>Email: <a href="mailto:tokorotiAromaBahagia@example.com">tokorotiAromaBahagia@example.com</a></p>
-        <p>Telepon: +62 812 3456 7890</p>
-    </footer>
+    document.getElementById('receipt-items').innerHTML = cartItems;
+    document.getElementById('final-total').textContent = total;
+    document.getElementById('receipt-modal').style.display = 'block';
+}   
  <script>
-    <script src="app.js"></script>
 </body>
 </html>
