@@ -171,25 +171,7 @@
     <div id="cart-icon" aria-label="Buka Keranjang Belanja">
         🛒
     </div>
-    <script src="app.js"></script>
-    <script>
-        // Login functionality
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            if (username === "admin" && password === "1234") {
-                alert("Login berhasil!");
-                document.getElementById('login-section').style.display = 'none';
-                document.getElementById('produk').style.display = 'block';
-                document.getElementById('keranjang').style.display = 'block';
-                document.getElementById('cart-icon').style.display = 'block';
-            } else {
-                alert("Username atau password salah!");
-            }
-        });
-        <!-- Payment Modal -->
+     <!-- Payment Modal -->
 <div id="payment-modal" class="modal">
     <h2>Metode Pembayaran</h2>
     <ul id="payment-items"></ul>
@@ -214,6 +196,29 @@
     <p>Pembayaran telah berhasil melalui Transfer atau QRIS. Roti akan dikirim!</p>
     <button id="close-transfer-qris">Tutup</button>
 </div>
+    <footer>
+        <h2>Kontak Kami</h2>
+        <p>Email: <a href="mailto:tokorotiAromaBahagia@example.com">tokorotiAromaBahagia@example.com</a></p>
+        <p>Telepon: +62 812 3456 7890</p>
+    </footer>
+    <script src="app.js"></script>
+    <script>
+        // Login functionality
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === "admin" && password === "1234") {
+                alert("Login berhasil!");
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('produk').style.display = 'block';
+                document.getElementById('keranjang').style.display = 'block';
+                document.getElementById('cart-icon').style.display = 'block';
+            } else {
+                alert("Username atau password salah!");
+            }
+        });
 // Show payment modal when cart icon is clicked
 document.getElementById('cart-icon').addEventListener('click', function() {
     const cartItems = document.getElementById('cart-items').innerHTML;
