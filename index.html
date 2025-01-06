@@ -102,15 +102,6 @@
         <p>Telepon: +62 812 3456 7890</p>
     </footer>
 
-    <!-- In the payment modal, add a "Pay Now" button before showing the payment options -->
-<div id="payment-modal" class="modal">
-    <h2>Detail Belanja</h2>
-    <ul id="payment-items"></ul>
-    <p>Total: Rp <span id="payment-total"></span></p>
-    <button id="pay-now">Bayar Sekarang</button> <!-- New Pay Now button -->
-    <button id="close-payment">Kembali</button>
-</div>
-    
     <div id="payment-modal" class="modal">
         <h2>Metode Pembayaran</h2>
         <ul id="payment-items"></ul>
@@ -146,42 +137,22 @@
                 alert("Username atau password salah!");
             }
         });
-    // Show payment modal when cart icon is clicked
-    document.getElementById('cart-icon').addEventListener('click', function() {
-        const cartItems = document.getElementById('cart-items').innerHTML;
-        const total = document.getElementById('total').textContent;
 
-        if (cartItems.trim() === "") {
-            alert("Keranjang belanja kosong!");
-            return;
-        }
+        // Show payment modal when cart icon is clicked
+        document.getElementById('cart-icon').addEventListener('click', function() {
+            const cartItems = document.getElementById('cart-items').innerHTML;
+            const total = document.getElementById('total').textContent;
 
-        document.getElementById('payment-items').innerHTML = cartItems;
-        document.getElementById('payment-total').textContent = total;
-        document.getElementById('payment-modal').style.display = 'block';
-    });
+            if (cartItems.trim() === "") {
+                alert("Keranjang belanja kosong!");
+                return;
+            }
 
-    // Handle "Pay Now" button click
-    document.getElementById('pay-now').addEventListener('click', function() {
-        // Hide the payment details and show the payment method selection
-        document.getElementById('payment-modal').innerHTML = `
-            <h2>Metode Pembayaran</h2>
-            <ul id="payment-items"></ul>
-            <p>Total: Rp <span id="payment-total"></span></p>
-            <button id="e-wallet">E-Wallet</button>
-            <button id="bank-transfer">Transfer Bank</button>
-            <button id="cod">COD</button>
-            <button id="close-payment">Kembali</button>
-        `;
-        // Re-assign cart items and total to the new modal
-        document.getElementById('payment-items').innerHTML = document.getElementById('cart-items').innerHTML;
-        document.getElementById('payment-total').textContent = document.getElementById('total').textContent;
-
-        // Show payment method buttons
-        document.getElementById('payment-modal').style.display = 'block';
-    });
-
-    // Handle payment method selection
+            document.getElementById('payment-items').innerHTML = cartItems;
+            document.getElementById('payment-total').textContent = total;
+            document.getElementById('payment-modal').style.display = 'block';
+        });
+        // Handle payment method selection
     document.getElementById('e-wallet').addEventListener('click', function() {
         alert("Pembayaran berhasil melalui E-Wallet, Roti akan dikirim.");
         document.getElementById('payment-modal').style.display = 'none';
@@ -197,36 +168,35 @@
         document.getElementById('payment-modal').style.display = 'none';
     });
 
-    // Close payment modal
-    document.getElementById('close-payment').addEventListener('click', function() {
-        document.getElementById('payment-modal').style.display = 'none';
-    });
-
-    // Close receipt modal
-    document.getElementById('close-receipt').addEventListener('click', function() {
-        document.getElementById('receipt-modal').style.display = 'none';
-    });
-
-    // Function to add product to the cart
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', function() {
-            const itemName = this.getAttribute('data-name');
-            const itemPrice = parseInt(this.getAttribute('data-price'));
-
-            const cartItems = document.getElementById('cart-items');
-            const totalElement = document.getElementById('total');
-            let total = parseInt(totalElement.textContent);
-
-            // Add product to cart list
-            const listItem = document.createElement('li');
-            listItem.textContent = `${itemName} - Rp${itemPrice.toLocaleString('id-ID')}`;
-            cartItems.appendChild(listItem);
-
-            // Update total price
-            total += itemPrice;
-            totalElement.textContent = total.toLocaleString('id-ID');
+        // Close payment modal
+        document.getElementById('close-payment').addEventListener('click', function() {
+            document.getElementById('payment-modal').style.display = 'none';
         });
+
+        // Close receipt modal
+        document.getElementById('close-receipt').addEventListener('click', function() {
+            document.getElementById('receipt-modal').style.display = 'none';
+        });
+        // Fungsi untuk menambahkan produk ke keranjang
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+        const itemName = this.getAttribute('data-name');
+        const itemPrice = parseInt(this.getAttribute('data-price'));
+
+        const cartItems = document.getElementById('cart-items');
+        const totalElement = document.getElementById('total');
+        let total = parseInt(totalElement.textContent);
+
+        // Tambahkan produk ke daftar keranjang
+        const listItem = document.createElement('li');
+        listItem.textContent = ${itemName} - Rp${itemPrice.toLocaleString('id-ID')};
+        cartItems.appendChild(listItem);
+
+        // Perbarui total harga
+        total += itemPrice;
+        totalElement.textContent = total.toLocaleString('id-ID');
     });
-</script>
+});
+    </script>
 </body>
-</html>
+</html> 
