@@ -166,42 +166,41 @@
         </ul>
         <p>Total: Rp <span id="total">0</span></p>
     </section>
+<!-- Cart Icon -->
+    <div id="cart-icon" aria-label="Buka Keranjang Belanja">🛒</div>
 
-    <!-- Cart Icon (Now used for Payment Modal) -->
-    <div id="cart-icon" aria-label="Buka Keranjang Belanja">
-        🛒
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <h2>Metode Pembayaran</h2>
+        <ul id="payment-items"></ul>
+        <p>Total: Rp <span id="payment-total"></span></p>
+        <button id="pay-now">Bayar Sekarang</button>
+        <button id="close-payment">Kembali</button>
     </div>
-     <!-- Payment Modal -->
-<div id="payment-modal" class="modal">
-    <h2>Metode Pembayaran</h2>
-    <ul id="payment-items"></ul>
-    <p>Total: Rp <span id="payment-total"></span></p>
-    <button id="pay-now">Bayar Sekarang</button>
-    <button id="close-payment">Kembali</button>
-</div>
 
-<!-- Cash Payment Modal -->
-<div id="cash-payment-modal" class="modal">
-    <h2>Pembayaran Cash</h2>
-    <p>Masukkan uang yang diterima:</p>
-    <input type="number" id="received-money" placeholder="Uang yang diterima" required>
-    <button id="process-cash-payment">Proses Pembayaran</button>
-    <button id="close-cash-payment">Kembali</button>
-    <p id="cash-change" style="display: none;"></p>
-</div>
+    <!-- Cash Payment Modal -->
+    <div id="cash-payment-modal" class="modal">
+        <h2>Pembayaran Cash</h2>
+        <p>Masukkan uang yang diterima:</p>
+        <input type="number" id="received-money" placeholder="Uang yang diterima" required>
+        <button id="process-cash-payment">Proses Pembayaran</button>
+        <button id="close-cash-payment">Kembali</button>
+        <p id="cash-change" style="display: none;"></p>
+    </div>
 
-<!-- Transfer / QRIS Payment Modal -->
-<div id="transfer-qris-payment-modal" class="modal">
-    <h2>Pembayaran Berhasil</h2>
-    <p>Pembayaran telah berhasil melalui Transfer atau QRIS. Roti akan dikirim!</p>
-    <button id="close-transfer-qris">Tutup</button>
-</div>
+    <!-- Transfer / QRIS Payment Modal -->
+    <div id="transfer-qris-payment-modal" class="modal">
+        <h2>Pembayaran Berhasil</h2>
+        <p>Pembayaran telah berhasil melalui Transfer atau QRIS. Roti akan dikirim!</p>
+        <button id="close-transfer-qris">Tutup</button>
+    </div>
+
     <footer>
         <h2>Kontak Kami</h2>
         <p>Email: <a href="mailto:tokorotiAromaBahagia@example.com">tokorotiAromaBahagia@example.com</a></p>
         <p>Telepon: +62 812 3456 7890</p>
     </footer>
-    <script src="app.js"></script>
+
     <script>
         // Login functionality
         document.getElementById('login-form').addEventListener('submit', function(e) {
@@ -219,81 +218,82 @@
                 alert("Username atau password salah!");
             }
         });
-// Show payment modal when cart icon is clicked
-document.getElementById('cart-icon').addEventListener('click', function() {
-    const cartItems = document.getElementById('cart-items').innerHTML;
-    const total = document.getElementById('total').textContent;
 
-    if (cartItems.trim() === "") {
-        alert("Keranjang belanja kosong!");
-        return;
-    }
+        // Show payment modal when cart icon is clicked
+        document.getElementById('cart-icon').addEventListener('click', function() {
+            const cartItems = document.getElementById('cart-items').innerHTML;
+            const total = document.getElementById('total').textContent;
 
-    document.getElementById('payment-items').innerHTML = cartItems;
-    document.getElementById('payment-total').textContent = total;
-    document.getElementById('payment-modal').style.display = 'block';
-});
+            if (cartItems.trim() === "") {
+                alert("Keranjang belanja kosong!");
+                return;
+            }
 
-// Handle payment method selection when "Bayar Sekarang" is clicked
-document.getElementById('pay-now').addEventListener('click', function() {
-    const paymentModal = document.getElementById('payment-modal');
-    paymentModal.style.display = 'none';
-    
-    // Display options for cash, transfer, or QRIS
-    const paymentMethod = prompt("Pilih metode pembayaran:\n1. Cash\n2. Transfer\n3. QRIS");
-    
-    if (paymentMethod === "1") {
-        // Show cash payment modal
-        document.getElementById('cash-payment-modal').style.display = 'block';
-    } else if (paymentMethod === "2" || paymentMethod === "3") {
-        // Show success message for transfer/QRIS
-        document.getElementById('transfer-qris-payment-modal').style.display = 'block';
-    } else {
-        alert("Metode pembayaran tidak valid.");
-    }
-});
+            document.getElementById('payment-items').innerHTML = cartItems;
+            document.getElementById('payment-total').textContent = total;
+            document.getElementById('payment-modal').style.display = 'block';
+        });
 
-// Process cash payment
-document.getElementById('process-cash-payment').addEventListener('click', function() {
-    const receivedMoney = parseInt(document.getElementById('received-money').value);
-    const total = parseInt(document.getElementById('payment-total').textContent);
-    
-    if (isNaN(receivedMoney) || receivedMoney < total) {
-        alert("Jumlah uang yang diterima tidak cukup!");
-        return;
-    }
+        // Handle payment method selection when "Bayar Sekarang" is clicked
+        document.getElementById('pay-now').addEventListener('click', function() {
+            const paymentModal = document.getElementById('payment-modal');
+            paymentModal.style.display = 'none';
+            
+            // Display options for cash, transfer, or QRIS
+            const paymentMethod = prompt("Pilih metode pembayaran:\n1. Cash\n2. Transfer\n3. QRIS");
+            
+            if (paymentMethod === "1") {
+                // Show cash payment modal
+                document.getElementById('cash-payment-modal').style.display = 'block';
+            } else if (paymentMethod === "2" || paymentMethod === "3") {
+                // Show success message for transfer/QRIS
+                document.getElementById('transfer-qris-payment-modal').style.display = 'block';
+            } else {
+                alert("Metode pembayaran tidak valid.");
+            }
+        });
 
-    const change = receivedMoney - total;
-    document.getElementById('cash-change').textContent = `Kembalian: Rp ${change.toLocaleString('id-ID')}`;
-    document.getElementById('cash-change').style.display = 'block';
-    
-    // Hide the cash payment modal
-    setTimeout(() => {
-        document.getElementById('cash-payment-modal').style.display = 'none';
-        showReceipt();
-    }, 2000);
-});
+        // Process cash payment
+        document.getElementById('process-cash-payment').addEventListener('click', function() {
+            const receivedMoney = parseInt(document.getElementById('received-money').value);
+            const total = parseInt(document.getElementById('payment-total').textContent);
+            
+            if (isNaN(receivedMoney) || receivedMoney < total) {
+                alert("Jumlah uang yang diterima tidak cukup!");
+                return;
+            }
 
-// Close cash payment modal
-document.getElementById('close-cash-payment').addEventListener('click', function() {
-    document.getElementById('cash-payment-modal').style.display = 'none';
-});
+            const change = receivedMoney - total;
+            document.getElementById('cash-change').textContent = `Kembalian: Rp ${change.toLocaleString('id-ID')}`;
+            document.getElementById('cash-change').style.display = 'block';
+            
+            // Hide the cash payment modal
+            setTimeout(() => {
+                document.getElementById('cash-payment-modal').style.display = 'none';
+                showReceipt();
+            }, 2000);
+        });
 
-// Close transfer / QRIS payment modal
-document.getElementById('close-transfer-qris').addEventListener('click', function() {
-    document.getElementById('transfer-qris-payment-modal').style.display = 'none';
-    showReceipt();
-});
+        // Close cash payment modal
+        document.getElementById('close-cash-payment').addEventListener('click', function() {
+            document.getElementById('cash-payment-modal').style.display = 'none';
+        });
 
-// Show receipt after successful payment
-function showReceipt() {
-    const cartItems = document.getElementById('cart-items').innerHTML;
-    const total = document.getElementById('total').textContent;
+        // Close transfer / QRIS payment modal
+        document.getElementById('close-transfer-qris').addEventListener('click', function() {
+            document.getElementById('transfer-qris-payment-modal').style.display = 'none';
+            showReceipt();
+        });
 
-    document.getElementById('receipt-items').innerHTML = cartItems;
-    document.getElementById('final-total').textContent = total;
-    document.getElementById('receipt-modal').style.display = 'block';
-}   
- <script>
+        // Show receipt after successful payment
+        function showReceipt() {
+            const cartItems = document.getElementById('cart-items').innerHTML;
+            const total = document.getElementById('total').textContent;
+
+            document.getElementById('receipt-items').innerHTML = cartItems;
+            document.getElementById('final-total').textContent = total;
+            document.getElementById('receipt-modal').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
