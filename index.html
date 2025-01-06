@@ -51,7 +51,6 @@
             z-index: 999;
         }
     </style>
-    
 </head>
 <body>
     <header>
@@ -59,11 +58,9 @@
         <p>Selamat Datang di Toko Roti Kami!<br>
         Kami menjual berbagai macam roti segar dan lezat.</p>
     </header>
-
-    <!-- Simbol Keranjang -->
-    <div id="cart-icon" style="display: none;">
-        &#128722; <!-- Simbol keranjang belanja -->
-    </div>
+<div id="cart-icon" style="display: none;">
+    &#128722; <!-- Simbol keranjang belanja -->
+</div>
     <!-- Login Section -->
     <section id="login-section">
         <h2>Login</h2>
@@ -121,7 +118,8 @@
         <p>Total Pembayaran: Rp <span id="final-total"></span></p>
         <button id="close-receipt">Kembali</button>
     </div>
- <script src="app.js"></script>
+
+    <script src="app.js"></script>
     <script>
         // Login functionality
         document.getElementById('login-form').addEventListener('submit', function(e) {
@@ -139,6 +137,31 @@
                 alert("Username atau password salah!");
             }
         });
-        <script>
+
+        // Show payment modal when cart icon is clicked
+        document.getElementById('cart-icon').addEventListener('click', function() {
+            const cartItems = document.getElementById('cart-items').innerHTML;
+            const total = document.getElementById('total').textContent;
+
+            if (cartItems.trim() === "") {
+                alert("Keranjang belanja kosong!");
+                return;
+            }
+
+            document.getElementById('payment-items').innerHTML = cartItems;
+            document.getElementById('payment-total').textContent = total;
+            document.getElementById('payment-modal').style.display = 'block';
+        });
+
+        // Close payment modal
+        document.getElementById('close-payment').addEventListener('click', function() {
+            document.getElementById('payment-modal').style.display = 'none';
+        });
+
+        // Close receipt modal
+        document.getElementById('close-receipt').addEventListener('click', function() {
+            document.getElementById('receipt-modal').style.display = 'none';
+        });
+    </script>
 </body>
 </html>
