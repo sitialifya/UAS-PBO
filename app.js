@@ -86,3 +86,58 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
+
+// Login functionality
+document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username === "admin" && password === "1234") {
+        alert("Login berhasil!");
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('produk').style.display = 'block';
+        document.getElementById('keranjang').style.display = 'block';
+        document.getElementById('cart-icon').style.display = 'block';
+    } else {
+        alert("Username atau password salah!");
+    }
+});
+
+// Show payment modal when cart icon is clicked
+document.getElementById('cart-icon').addEventListener('click', function() {
+    const cartItems = document.getElementById('cart-items').innerHTML;
+    const total = document.getElementById('total').textContent;
+
+    if (cartItems.trim() === "") {
+        alert("Keranjang belanja kosong!");
+        return;
+    }
+
+    document.getElementById('payment-items').innerHTML = cartItems;
+    document.getElementById('payment-total').textContent = total;
+    document.getElementById('payment-modal').style.display = 'block';
+});
+
+// Close payment modal
+document.getElementById('close-payment').addEventListener('click', function() {
+    document.getElementById('payment-modal').style.display = 'none';
+});
+
+// Handle payment success
+document.querySelectorAll('#payment-modal button:not(#close-payment)').forEach(button => {
+    button.addEventListener('click', function() {
+        const receiptItems = document.getElementById('payment-items').innerHTML;
+        const finalTotal = document.getElementById('payment-total').textContent;
+
+        document.getElementById('receipt-items').innerHTML = receiptItems;
+        document.getElementById('final-total').textContent = finalTotal;
+        document.getElementById('payment-modal').style.display = 'none';
+        document.getElementById('receipt-modal').style.display = 'block';
+    });
+});
+
+// Close receipt modal
+document.getElementById('close-receipt').addEventListener('click', function() {
+    document.getElementById('receipt-modal').style.display = 'none';
+});
