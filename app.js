@@ -29,7 +29,7 @@ function updateCart() {
     // Tampilkan produk yang ada di keranjang
     cart.forEach(item => {
         const li = document.createElement('li');
-        li.textContent = `${item.name} - Rp ${item.price.toLocaleString()}`;
+        li.textContent = ${item.name} - Rp ${item.price.toLocaleString()};
         cartItemsElement.appendChild(li);
         total += item.price;
     });
@@ -57,6 +57,26 @@ document.getElementById('debit').addEventListener('click', () => {
 document.getElementById('qris').addEventListener('click', () => {
     showReceipt();
 });
+// Fungsi untuk menambahkan produk ke keranjang
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+        const itemName = this.getAttribute('data-name');
+        const itemPrice = parseInt(this.getAttribute('data-price'));
+
+        const cartItems = document.getElementById('cart-items');
+        const totalElement = document.getElementById('total');
+        let total = parseInt(totalElement.textContent);
+
+        // Tambahkan produk ke daftar keranjang
+        const listItem = document.createElement('li');
+        listItem.textContent = `${itemName} - Rp${itemPrice.toLocaleString('id-ID')}`;
+        cartItems.appendChild(listItem);
+
+        // Perbarui total harga
+        total += itemPrice;
+        totalElement.textContent = total.toLocaleString('id-ID');
+    });
+});
 
 // Menampilkan struk pembelian
 function showReceipt() {
@@ -68,7 +88,7 @@ function showReceipt() {
     
     cart.forEach(item => {
         const li = document.createElement('li');
-        li.textContent = `${item.name} - Rp ${item.price.toLocaleString()}`;
+        li.textContent = ${item.name} - Rp ${item.price.toLocaleString()};
         receiptItemsElement.appendChild(li);
         total += item.price;
     });
@@ -85,43 +105,3 @@ if ('serviceWorker' in navigator) {
         console.log('Pendaftaran Service Worker gagal:', error);
       });
   });
-}
-
-
-// Show payment modal when cart icon is clicked
-document.getElementById('cart-icon').addEventListener('click', function() {
-    const cartItems = document.getElementById('cart-items').innerHTML;
-    const total = document.getElementById('total').textContent;
-
-    if (cartItems.trim() === "") {
-        alert("Keranjang belanja kosong!");
-        return;
-    }
-
-    document.getElementById('payment-items').innerHTML = cartItems;
-    document.getElementById('payment-total').textContent = total;
-    document.getElementById('payment-modal').style.display = 'block';
-});
-
-// Close payment modal
-document.getElementById('close-payment').addEventListener('click', function() {
-    document.getElementById('payment-modal').style.display = 'none';
-});
-
-// Handle payment success
-document.querySelectorAll('#payment-modal button:not(#close-payment)').forEach(button => {
-    button.addEventListener('click', function() {
-        const receiptItems = document.getElementById('payment-items').innerHTML;
-        const finalTotal = document.getElementById('payment-total').textContent;
-
-        document.getElementById('receipt-items').innerHTML = receiptItems;
-        document.getElementById('final-total').textContent = finalTotal;
-        document.getElementById('payment-modal').style.display = 'none';
-        document.getElementById('receipt-modal').style.display = 'block';
-    });
-});
-
-// Close receipt modal
-document.getElementById('close-receipt').addEventListener('click', function() {
-    document.getElementById('receipt-modal').style.display = 'none';
-});
