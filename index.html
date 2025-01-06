@@ -152,6 +152,21 @@
             document.getElementById('payment-total').textContent = total;
             document.getElementById('payment-modal').style.display = 'block';
         });
+        // Handle payment method selection
+    document.getElementById('e-wallet').addEventListener('click', function() {
+        alert("Pembayaran berhasil melalui E-Wallet, Roti akan dikirim.");
+        document.getElementById('payment-modal').style.display = 'none';
+    });
+
+    document.getElementById('bank-transfer').addEventListener('click', function() {
+        alert("Pembayaran berhasil melalui Transfer Bank, Roti akan dikirim.");
+        document.getElementById('payment-modal').style.display = 'none';
+    });
+
+    document.getElementById('cod').addEventListener('click', function() {
+        alert("Pembayaran berhasil melalui COD, Roti akan dikirim.");
+        document.getElementById('payment-modal').style.display = 'none';
+    });
 
         // Close payment modal
         document.getElementById('close-payment').addEventListener('click', function() {
