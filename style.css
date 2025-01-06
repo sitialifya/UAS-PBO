@@ -159,3 +159,47 @@ footer {
     padding: 10px;
     cursor: pointer;
 }
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    #produk .produk {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .item img {
+        width: 80%;
+    }
+
+    #cart-icon {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    #produk .produk {
+        grid-template-columns: 1fr;
+    }
+
+    .item img {
+        width: 100%;
+    }
+
+    #cart-icon {
+        font-size: 18px;
+    }
+}
