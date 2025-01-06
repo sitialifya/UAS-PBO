@@ -160,7 +160,18 @@
         document.getElementById('close-payment').addEventListener('click', function() {
             document.getElementById('payment-modal').style.display = 'none';
         });
+         // Handle payment success
+        document.querySelectorAll('#payment-modal button:not(#close-payment)').forEach(button => {
+            button.addEventListener('click', function() {
+                const receiptItems = document.getElementById('payment-items').innerHTML;
+                const finalTotal = document.getElementById('payment-total').textContent;
 
+                document.getElementById('receipt-items').innerHTML = receiptItems;
+                document.getElementById('final-total').textContent = finalTotal;
+                document.getElementById('payment-modal').style.display = 'none';
+                document.getElementById('receipt-modal').style.display = 'block';
+            });
+        });
         // Close receipt modal
         document.getElementById('close-receipt').addEventListener('click', function() {
             document.getElementById('receipt-modal').style.display = 'none';
