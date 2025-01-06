@@ -172,32 +172,6 @@
         🛒
     </div>
 
-    <!-- Payment Modal -->
-    <div id="payment-modal" class="modal">
-        <h2>Metode Pembayaran</h2>
-        <ul id="payment-items"></ul>
-        <p>Total: Rp <span id="payment-total"></span></p>
-        <button id="e-wallet">E-Wallet</button>
-        <button id="bank-transfer">Transfer Bank</button>
-        <button id="cod">COD</button>
-        <button id="close-payment">Kembali</button>
-    </div>
-
-    <!-- Receipt Modal -->
-    <div id="receipt-modal" class="modal">
-        <h2>Struk Pembelian</h2>
-        <ul id="receipt-items"></ul>
-        <p>Total Pembayaran: Rp <span id="final-total"></span></p>
-        <button id="close-receipt">Kembali</button>
-    </div>
-
-    <footer>
-        <h2>Kontak Kami</h2>
-        <p>Email: <a href="mailto:tokorotiAromaBahagia@example.com">tokorotiAromaBahagia@example.com</a></p>
-        <p>Telepon: +62 812 3456 7890</p>
-    </footer>
-
-    <script src="app.js"></script>
     <script>
         // Login functionality
         document.getElementById('login-form').addEventListener('submit', function(e) {
@@ -290,6 +264,12 @@
             document.getElementById('final-total').textContent = total;
             document.getElementById('receipt-modal').style.display = 'block';
         }
-    </script>
+    <footer>
+        <h2>Kontak Kami</h2>
+        <p>Email: <a href="mailto:tokorotiAromaBahagia@example.com">tokorotiAromaBahagia@example.com</a></p>
+        <p>Telepon: +62 812 3456 7890</p>
+    </footer>
+ <script>
+    <script src="app.js"></script>
 </body>
 </html>
