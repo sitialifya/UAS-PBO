@@ -162,6 +162,26 @@
         document.getElementById('close-receipt').addEventListener('click', function() {
             document.getElementById('receipt-modal').style.display = 'none';
         });
+        // Fungsi untuk menambahkan produk ke keranjang
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+        const itemName = this.getAttribute('data-name');
+        const itemPrice = parseInt(this.getAttribute('data-price'));
+
+        const cartItems = document.getElementById('cart-items');
+        const totalElement = document.getElementById('total');
+        let total = parseInt(totalElement.textContent);
+
+        // Tambahkan produk ke daftar keranjang
+        const listItem = document.createElement('li');
+        listItem.textContent = `${itemName} - Rp${itemPrice.toLocaleString('id-ID')}`;
+        cartItems.appendChild(listItem);
+
+        // Perbarui total harga
+        total += itemPrice;
+        totalElement.textContent = total.toLocaleString('id-ID');
+    });
+});
     </script>
 </body>
 </html>
