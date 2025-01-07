@@ -141,7 +141,19 @@ footer {
     color: white;
     cursor: pointer;
 }
-
+.modal {
+  display: none; /* Awalnya disembunyikan */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #EAE1E1; /* Warna latar belakang modal */
+  padding: 20px;
+  border: 1px solid #D5C3C3; /* Warna border */
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: #C06C84; /* Warna teks */
+}
 #payment-modal, #receipt-modal {
     display: none;
     position: fixed;
