@@ -219,6 +219,27 @@
             }
         });
 
+        // Fungsi untuk menambahkan item ke keranjang
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', function() {
+        const name = this.getAttribute('data-name');
+        const price = parseInt(this.getAttribute('data-price'));
+
+        // Tambahkan item ke daftar keranjang
+        const cartItems = document.getElementById('cart-items');
+        const li = document.createElement('li');
+        li.textContent = `${name} - Rp${price.toLocaleString('id-ID')}`;
+        cartItems.appendChild(li);
+
+        // Perbarui total
+        const totalElement = document.getElementById('total');
+        const currentTotal = parseInt(totalElement.textContent);
+        totalElement.textContent = (currentTotal + price).toLocaleString('id-ID');
+
+        alert(`${name} berhasil ditambahkan ke keranjang!`);
+    });
+})
+
         // Show payment modal when cart icon is clicked
         document.getElementById('cart-icon').addEventListener('click', function() {
             const cartItems = document.getElementById('cart-items').innerHTML;
