@@ -166,153 +166,149 @@
         </ul>
         <p>Total: Rp <span id="total">0</span></p>
     </section>
+<!-- Keranjang Section -->
+<section id="keranjang" style="display: none;">
+    <h2>Keranjang Belanja</h2>
+    <ul id="cart-items"></ul>
+    <p>Total: Rp <span id="total">0</span></p>
+</section>
+
 <!-- Cart Icon -->
-    <div id="cart-icon" aria-label="Buka Keranjang Belanja">🛒</div>
+<div id="cart-icon" style="display: none;">&#128722;</div>
 
-    <!-- Payment Modal -->
-    <div id="payment-modal" class="modal">
-        <h2>Metode Pembayaran</h2>
-        <ul id="payment-items"></ul>
-        <p>Total: Rp <span id="payment-total"></span></p>
-        <button id="pay-now">Bayar Sekarang</button>
-        <button id="close-payment">Kembali</button>
-    </div>
+<!-- Modals -->
+<div id="payment-modal" class="modal">
+    <h2>Metode Pembayaran</h2>
+    <ul id="payment-items"></ul>
+    <p>Total: Rp <span id="payment-total"></span></p>
+    <button id="pay-now">Bayar Sekarang</button>
+    <button id="close-payment">Kembali</button>
+</div>
 
-    <!-- Cash Payment Modal -->
-    <div id="cash-payment-modal" class="modal">
-        <h2>Pembayaran Cash</h2>
-        <p>Masukkan uang yang diterima:</p>
-        <input type="number" id="received-money" placeholder="Uang yang diterima" required>
-        <button id="process-cash-payment">Proses Pembayaran</button>
-        <button id="close-cash-payment">Kembali</button>
-        <p id="cash-change" style="display: none;"></p>
-    </div>
+<div id="cash-payment-modal" class="modal">
+    <h2>Pembayaran Cash</h2>
+    <p>Masukkan uang yang diterima:</p>
+    <input type="number" id="received-money" placeholder="Uang yang diterima" required>
+    <button id="process-cash-payment">Proses Pembayaran</button>
+    <button id="close-cash-payment">Kembali</button>
+    <p id="cash-change" style="display: none;"></p>
+</div>
 
-    <!-- Transfer / QRIS Payment Modal -->
-    <div id="transfer-qris-payment-modal" class="modal">
-        <h2>Pembayaran Berhasil</h2>
-        <p>Pembayaran telah berhasil melalui Transfer atau QRIS. Roti akan dikirim!</p>
-        <button id="close-transfer-qris">Tutup</button>
-    </div>
+<div id="transfer-qris-payment-modal" class="modal">
+    <h2>Pembayaran Berhasil</h2>
+    <p>Pembayaran telah berhasil melalui Transfer atau QRIS.</p>
+    <button id="close-transfer-qris">Tutup</button>
+</div>
 
-    <footer>
-        <h2>Kontak Kami</h2>
-        <p>Email: <a href="mailto:tokorotiAromaBahagia@example.com">tokorotiAromaBahagia@example.com</a></p>
-        <p>Telepon: +62 812 3456 7890</p>
-    </footer>
+<div id="receipt-modal" class="modal">
+    <h2>Struk Pembayaran</h2>
+    <ul id="receipt-items"></ul>
+    <p>Total: Rp <span id="final-total"></span></p>
+    <button id="close-receipt">Tutup</button>
+</div>
 
-    <script>
-        // Login functionality
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+<footer>
+    <h2>Kontak Kami</h2>
+    <p>Email: <a href="mailto:tokorotiAromaBahagia@example.com">tokorotiAromaBahagia@example.com</a></p>
+    <p>Telepon: +62 812 3456 7890</p>
+</footer>
 
-            if (username === "admin" && password === "1234") {
-                alert("Login berhasil!");
-                document.getElementById('login-section').style.display = 'none';
-                document.getElementById('produk').style.display = 'block';
-                document.getElementById('keranjang').style.display = 'block';
-                document.getElementById('cart-icon').style.display = 'block';
-            } else {
-                alert("Username atau password salah!");
-            }
-        });
-        // Fungsi untuk menambahkan item ke keranjang
-document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', function() {
-        const name = this.getAttribute('data-name');
-        const price = parseInt(this.getAttribute('data-price'));
+<script>
+    // Login functionality
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
-        // Tambahkan item ke daftar keranjang
-        const cartItems = document.getElementById('cart-items');
-        const li = document.createElement('li');
-        li.textContent = `${name} - Rp${price.toLocaleString('id-ID')}`;
-        cartItems.appendChild(li);
-
-        // Perbarui total
-        const totalElement = document.getElementById('total');
-        const currentTotal = parseInt(totalElement.textContent);
-        totalElement.textContent = (currentTotal + price).toLocaleString('id-ID');
-
-        alert(`${name} berhasil ditambahkan ke keranjang!`);
-    });
-});
-        // Show payment modal when cart icon is clicked
-        document.getElementById('cart-icon').addEventListener('click', function() {
-            const cartItems = document.getElementById('cart-items').innerHTML;
-            const total = document.getElementById('total').textContent;
-
-            if (cartItems.trim() === "") {
-                alert("Keranjang belanja kosong!");
-                return;
-            }
-
-            document.getElementById('payment-items').innerHTML = cartItems;
-            document.getElementById('payment-total').textContent = total;
-            document.getElementById('payment-modal').style.display = 'block';
-        });
-
-        // Handle payment method selection when "Bayar Sekarang" is clicked
-        document.getElementById('pay-now').addEventListener('click', function() {
-            const paymentModal = document.getElementById('payment-modal');
-            paymentModal.style.display = 'none';
-            
-            // Display options for cash, transfer, or QRIS
-            const paymentMethod = prompt("Pilih metode pembayaran:\n1. Cash\n2. Transfer\n3. QRIS");
-            
-            if (paymentMethod === "1") {
-                // Show cash payment modal
-                document.getElementById('cash-payment-modal').style.display = 'block';
-            } else if (paymentMethod === "2" || paymentMethod === "3") {
-                // Show success message for transfer/QRIS
-                document.getElementById('transfer-qris-payment-modal').style.display = 'block';
-            } else {
-                alert("Metode pembayaran tidak valid.");
-            }
-        });
-
-        // Process cash payment
-        document.getElementById('process-cash-payment').addEventListener('click', function() {
-            const receivedMoney = parseInt(document.getElementById('received-money').value);
-            const total = parseInt(document.getElementById('payment-total').textContent);
-            
-            if (isNaN(receivedMoney) || receivedMoney < total) {
-                alert("Jumlah uang yang diterima tidak cukup!");
-                return;
-            }
-
-            const change = receivedMoney - total;
-            document.getElementById('cash-change').textContent = Kembalian: Rp ${change.toLocaleString('id-ID')};
-            document.getElementById('cash-change').style.display = 'block';
-            
-            // Hide the cash payment modal
-            setTimeout(() => {
-                document.getElementById('cash-payment-modal').style.display = 'none';
-                showReceipt();
-            }, 2000);
-        });
-
-        // Close cash payment modal
-        document.getElementById('close-cash-payment').addEventListener('click', function() {
-            document.getElementById('cash-payment-modal').style.display = 'none';
-        });
-
-        // Close transfer / QRIS payment modal
-        document.getElementById('close-transfer-qris').addEventListener('click', function() {
-            document.getElementById('transfer-qris-payment-modal').style.display = 'none';
-            showReceipt();
-        });
-
-        // Show receipt after successful payment
-        function showReceipt() {
-            const cartItems = document.getElementById('cart-items').innerHTML;
-            const total = document.getElementById('total').textContent;
-
-            document.getElementById('receipt-items').innerHTML = cartItems;
-            document.getElementById('final-total').textContent = total;
-            document.getElementById('receipt-modal').style.display = 'block';
+        if (username === "admin" && password === "1234") {
+            alert("Login berhasil!");
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('produk').style.display = 'block';
+            document.getElementById('keranjang').style.display = 'block';
+            document.getElementById('cart-icon').style.display = 'block';
+        } else {
+            alert("Username atau password salah!");
         }
-    </script>
+    });
+
+    // Add to cart functionality
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function() {
+            const name = this.getAttribute('data-name');
+            const price = parseInt(this.getAttribute('data-price'));
+
+            const cartItems = document.getElementById('cart-items');
+            const li = document.createElement('li');
+            li.textContent = `${name} - Rp${price.toLocaleString('id-ID')}`;
+            cartItems.appendChild(li);
+
+            const totalElement = document.getElementById('total');
+            const currentTotal = parseInt(totalElement.textContent.replace(/\D/g, '')) || 0;
+            totalElement.textContent = (currentTotal + price).toLocaleString('id-ID');
+
+            alert(`${name} berhasil ditambahkan ke keranjang!`);
+        });
+    });
+
+    // Show payment modal
+    document.getElementById('cart-icon').addEventListener('click', function() {
+        const cartItems = document.getElementById('cart-items').innerHTML;
+        const total = document.getElementById('total').textContent;
+
+        if (!cartItems.trim()) {
+            alert("Keranjang belanja kosong!");
+            return;
+        }
+
+        document.getElementById('payment-items').innerHTML = cartItems;
+        document.getElementById('payment-total').textContent = total;
+        document.getElementById('payment-modal').style.display = 'block';
+    });
+
+    // Close modals
+    document.getElementById('close-payment').addEventListener('click', function() {
+        document.getElementById('payment-modal').style.display = 'none';
+    });
+
+    document.getElementById('close-receipt').addEventListener('click', function() {
+        document.getElementById('receipt-modal').style.display = 'none';
+    });
+    // Handle "Bayar Sekarang" button click
+document.getElementById('pay-now').addEventListener('click', function() {
+    const paymentMethod = prompt("Pilih metode pembayaran:\n1. Cash\n2. Transfer\n3. QRIS");
+
+    if (paymentMethod === "1") {
+        document.getElementById('payment-modal').style.display = 'none';
+        document.getElementById('cash-payment-modal').style.display = 'block';
+    } else if (paymentMethod === "2" || paymentMethod === "3") {
+        document.getElementById('payment-modal').style.display = 'none';
+        document.getElementById('transfer-qris-payment-modal').style.display = 'block';
+    } else if (!paymentMethod) {
+        alert("Anda belum memilih metode pembayaran.");
+    } else {
+        alert("Pilihan tidak valid. Silakan coba lagi.");
+    }
+});
+document.getElementById('pay-now').addEventListener('click', function() {
+    const paymentMethod = prompt("Pilih metode pembayaran:\n1. Cash\n2. Transfer\n3. QRIS");
+
+    // Validasi input pengguna
+    if (!paymentMethod) {
+        alert("Anda belum memilih metode pembayaran.");
+        return; // Keluar dari fungsi jika tidak ada pilihan
+    }
+
+    // Proses berdasarkan pilihan metode pembayaran
+    if (paymentMethod === "1") {
+        document.getElementById('payment-modal').style.display = 'none';
+        document.getElementById('cash-payment-modal').style.display = 'block';
+    } else if (paymentMethod === "2" || paymentMethod === "3") {
+        document.getElementById('payment-modal').style.display = 'none';
+        document.getElementById('transfer-qris-payment-modal').style.display = 'block';
+    } else {
+        alert("Pilihan tidak valid. Silakan coba lagi.");
+    }
+});
+</script>
 </body>
 </html>
