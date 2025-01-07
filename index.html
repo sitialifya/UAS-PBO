@@ -308,18 +308,17 @@ document.getElementById('pay-now').addEventListener('click', function() {
     } else {
         alert("Pilihan tidak valid. Silakan coba lagi.");
     }
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then((registration) => {
-                    console.log('Service Worker terdaftar dengan sukses:', registration);
-                })
-                .catch((error) => {
-                    console.log('Pendaftaran Service Worker gagal:', error);
-                });
-        });
-    }
-});
-</script>
+   if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then((registration) => {
+                        console.log('Service Worker terdaftar dengan sukses:', registration);
+                    })
+                    .catch((error) => {
+                        console.log('Pendaftaran Service Worker gagal:', error);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
