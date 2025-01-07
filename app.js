@@ -72,7 +72,7 @@ function showReceipt() {
         receiptItemsElement.appendChild(li);
         total += item.price;
     });
-
+console.log("Metode pembayaran yang dipilih:", paymentMethod);
     finalTotalElement.textContent = total.toLocaleString();
 }
 if ('serviceWorker' in navigator) {
