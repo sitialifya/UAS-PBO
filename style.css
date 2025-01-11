@@ -205,7 +205,7 @@ h1, h2 {
     width: 100%;
     height: auto;
 }
-
+/* Tambahkan atau perbaiki media queries untuk tampilan mobile */
 @media (max-width: 768px) {
     .item {
         width: 48%;
@@ -214,6 +214,10 @@ h1, h2 {
 
     header h1 {
         font-size: 24px;
+    }
+
+    footer {
+        font-size: 14px;
     }
 }
 
