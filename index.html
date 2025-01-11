@@ -1,11 +1,11 @@
-!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Penjualan Roti</title>
     <link rel="stylesheet" href="style.css">
-   <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json">
     <style>
         /* Gaya untuk ikon keranjang */
         #cart-icon {
@@ -50,6 +50,29 @@
             background: rgba(0, 0, 0, 0.5);
             z-index: 999;
         }
+
+        /* Responsivitas */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 20px;
+            }
+
+            .item {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .modal {
+                width: 90%;
+            }
+
+            footer {
+                text-align: center;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -58,9 +81,11 @@
         <p>Selamat Datang di Toko Roti Kami!<br>
         Kami menjual berbagai macam roti segar dan lezat.</p>
     </header>
-<div id="cart-icon" style="display: none;">
-    &#128722; <!-- Simbol keranjang belanja -->
-</div>
+
+    <div id="cart-icon" style="display: none;">
+        &#128722; <!-- Simbol keranjang belanja -->
+    </div>
+
     <!-- Login Section -->
     <section id="login-section">
         <h2>Login</h2>
@@ -73,250 +98,250 @@
         </form>
     </section>
 
-  <section id="produk" style="display: none;">
-    <h2>Produk Kami</h2>
-    <div class="produk">
-        <div class="item">
-            <img src="spicyfloss.jpeg" alt="Spicy Floss">
-            <h3>Spicy Floss</h3>
-            <p class="price">Rp12.500</p>
-            <button class="add-to-cart" data-name="Spicy Floss" data-price="12500" aria-label="Tambah Spicy Floss ke keranjang">
-                Tambah ke Keranjang
-            </button>
+    <!-- Produk Section -->
+    <section id="produk" style="display: none;">
+        <h2>Produk Kami</h2>
+        <div class="produk">
+            <div class="item">
+                <img src="spicyfloss.jpeg" alt="Spicy Floss">
+                <h3>Spicy Floss</h3>
+                <p class="price">Rp12.500</p>
+                <button class="add-to-cart" data-name="Spicy Floss" data-price="12500" aria-label="Tambah Spicy Floss ke keranjang">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+            <div class="item">
+                <img src="sausagediva.jpeg" alt="Sausage Diva">
+                <h3>Sausage Diva</h3>
+                <p class="price">Rp12.500</p>
+                <button class="add-to-cart" data-name="Sausage Diva" data-price="12500" aria-label="Tambah Sausage Diva ke keranjang">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+            <div class="item">
+                <img src="chocomeises.jpeg" alt="Choco Meises">
+                <h3>Choco Meises</h3>
+                <p class="price">Rp12.500</p>
+                <button class="add-to-cart" data-name="Choco Meises" data-price="12500" aria-label="Tambah Choco Meises ke keranjang">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+            <div class="item">
+                <img src="rendangfloss.jpeg" alt="Rendang Floss">
+                <h3>Rendang Floss</h3>
+                <p class="price">Rp12.500</p>
+                <button class="add-to-cart" data-name="Rendang Floss" data-price="12500" aria-label="Tambah Rendang Floss ke keranjang">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+            <div class="item">
+                <img src="milkybun.jpeg" alt="Milky Bun">
+                <h3>Milky Bun</h3>
+                <p class="price">Rp9.000</p>
+                <button class="add-to-cart" data-name="Milky Bun" data-price="9000" aria-label="Tambah Milky Bun ke keranjang">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+            <div class="item">
+                <img src="coffeebun.jpeg" alt="Coffee Bun">
+                <h3>Coffee Bun</h3>
+                <p class="price">Rp12.000</p>
+                <button class="add-to-cart" data-name="Coffee Bun" data-price="12000" aria-label="Tambah Coffee Bun ke keranjang">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+            <div class="item">
+                <img src="chocobun.jpeg" alt="Choco Bun">
+                <h3>Choco Bun</h3>
+                <p class="price">Rp9.000</p>
+                <button class="add-to-cart" data-name="Choco Bun" data-price="9000" aria-label="Tambah Choco Bun ke keranjang">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+            <div class="item">
+                <img src="sugarpillow.jpeg" alt="Sugar Pillow">
+                <h3>Sugar Pillow</h3>
+                <p class="price">Rp10.000</p>
+                <button class="add-to-cart" data-name="Sugar Pillow" data-price="10000" aria-label="Tambah Sugar Pillow ke keranjang">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+            <div class="item">
+                <img src="flossroll.jpeg" alt="Floss Roll">
+                <h3>Floss Roll</h3>
+                <p class="price">Rp14.500</p>
+                <button class="add-to-cart" data-name="Floss Roll" data-price="14500" aria-label="Tambah Floss Roll ke keranjang">
+                    Tambah ke Keranjang
+                </button>
+            </div>
+            <div class="item">
+                <img src="bananachococheese.jpeg" alt="Banana Choco Cheese">
+                <h3>Banana Choco Cheese</h3>
+                <p class="price">Rp12.500</p>
+                <button class="add-to-cart" data-name="Banana Choco Cheese" data-price="12500" aria-label="Tambah Banana Choco Cheese ke keranjang">
+                    Tambah ke Keranjang
+                </button>
+            </div>
         </div>
-        <div class="item">
-            <img src="sausagediva.jpeg" alt="Sausage Diva">
-            <h3>Sausage Diva</h3>
-            <p class="price">Rp12.500</p>
-            <button class="add-to-cart" data-name="Sausage Diva" data-price="12500" aria-label="Tambah Sausage Diva ke keranjang">
-                Tambah ke Keranjang
-            </button>
-        </div>
-        <div class="item">
-            <img src="chocomeises.jpeg" alt="Choco Meises">
-            <h3>Choco Meises</h3>
-            <p class="price">Rp12.500</p>
-            <button class="add-to-cart" data-name="Choco Meises" data-price="12500" aria-label="Tambah Choco Meises ke keranjang">
-                Tambah ke Keranjang
-            </button>
-        </div>
-        <div class="item">
-            <img src="rendangfloss.jpeg" alt="Rendang Floss">
-            <h3>Rendang Floss</h3>
-            <p class="price">Rp12.500</p>
-            <button class="add-to-cart" data-name="Rendang Floss" data-price="12500" aria-label="Tambah Rendang Floss ke keranjang">
-                Tambah ke Keranjang
-            </button>
-        </div>
-        <div class="item">
-            <img src="milkybun.jpeg" alt="Milky Bun">
-            <h3>Milky Bun</h3>
-            <p class="price">Rp9.000</p>
-            <button class="add-to-cart" data-name="Milky Bun" data-price="9000" aria-label="Tambah Milky Bun ke keranjang">
-                Tambah ke Keranjang
-            </button>
-        </div>
-        <div class="item">
-            <img src="coffeebun.jpeg" alt="Coffee Bun">
-            <h3>Coffee Bun</h3>
-            <p class="price">Rp12.000</p>
-            <button class="add-to-cart" data-name="Coffee Bun" data-price="12000" aria-label="Tambah Coffee Bun ke keranjang">
-                Tambah ke Keranjang
-            </button>
-        </div>
-        <div class="item">
-            <img src="chocobun.jpeg" alt="Choco Bun">
-            <h3>Choco Bun</h3>
-            <p class="price">Rp9.000</p>
-            <button class="add-to-cart" data-name="Choco Bun" data-price="9000" aria-label="Tambah Choco Bun ke keranjang">
-                Tambah ke Keranjang
-            </button>
-        </div>
-        <div class="item">
-            <img src="sugarpillow.jpeg" alt="Sugar Pillow">
-            <h3>Sugar Pillow</h3>
-            <p class="price">Rp10.000</p>
-            <button class="add-to-cart" data-name="Sugar Pillow" data-price="10000" aria-label="Tambah Sugar Pillow ke keranjang">
-                Tambah ke Keranjang
-            </button>
-        </div>
-        <div class="item">
-            <img src="flossroll.jpeg" alt="Floss Roll">
-            <h3>Floss Roll</h3>
-            <p class="price">Rp14.500</p>
-            <button class="add-to-cart" data-name="Floss Roll" data-price="14500" aria-label="Tambah Floss Roll ke keranjang">
-                Tambah ke Keranjang
-            </button>
-        </div>
-        <div class="item">
-            <img src="bananachococheese.jpeg" alt="Banana Choco Cheese">
-            <h3>Banana Choco Cheese</h3>
-            <p class="price">Rp12.500</p>
-            <button class="add-to-cart" data-name="Banana Choco Cheese" data-price="12500" aria-label="Tambah Banana Choco Cheese ke keranjang">
-                Tambah ke Keranjang
-            </button>
-        </div>
-    </div>
-</section>
-<!-- Keranjang Section, Initially Hidden -->
+    </section>
+
+    <!-- Keranjang Section -->
     <section id="keranjang" style="display: none;">
         <h2>Keranjang Belanja</h2>
         <ul id="cart-items">
             <!-- Daftar produk yang ditambahkan ke keranjang akan muncul di sini -->
         </ul>
         <p>Total: Rp <span id="total">0</span></p>
+        <button id="checkout-button">Lanjutkan ke Pembayaran</button>
     </section>
-<!-- Keranjang Section -->
-<section id="keranjang" style="display: none;">
-    <h2>Keranjang Belanja</h2>
-    <ul id="cart-items"></ul>
-    <p>Total: Rp <span id="total">0</span></p>
-</section>
 
-<!-- Cart Icon -->
-<div id="cart-icon" style="display: none;">&#128722;</div>
+    <!-- Modals -->
+    <div id="payment-modal" class="modal">
+        <h2>Metode Pembayaran</h2>
+        <ul id="payment-items"></ul>
+        <p>Total: Rp <span id="payment-total"></span></p>
+        <button id="pay-cash">Bayar Tunai</button>
+        <button id="pay-transfer">Transfer/QRIS</button>
+        <button id="close-payment">Kembali</button>
+    </div>
 
-<!-- Modals -->
-<div id="payment-modal" class="modal">
-    <h2>Metode Pembayaran</h2>
-    <ul id="payment-items"></ul>
-    <p>Total: Rp <span id="payment-total"></span></p>
-    <button id="pay-now">Bayar Sekarang</button>
-    <button id="close-payment">Kembali</button>
-</div>
+    <div id="cash-payment-modal" class="modal">
+        <h2>Pembayaran Cash</h2>
+        <p>Masukkan uang yang diterima:</p>
+        <input type="number" id="received-money" placeholder="Uang yang diterima" required>
+        <button id="process-cash-payment">Proses Pembayaran</button>
+        <button id="close-cash-payment">Kembali</button>
+        <p id="cash-change" style="display: none;"></p>
+    </div>
 
-<div id="cash-payment-modal" class="modal">
-    <h2>Pembayaran Cash</h2>
-    <p>Masukkan uang yang diterima:</p>
-    <input type="number" id="received-money" placeholder="Uang yang diterima" required>
-    <button id="process-cash-payment">Proses Pembayaran</button>
-    <button id="close-cash-payment">Kembali</button>
-    <p id="cash-change" style="display: none;"></p>
-</div>
+    <div id="transfer-qris-payment-modal" class="modal">
+        <h2>Pembayaran Berhasil</h2>
+        <p>Pembayaran telah berhasil melalui Transfer atau QRIS.</p>
+        <button id="close-transfer-qris">Tutup</button>
+    </div>
 
-<div id="transfer-qris-payment-modal" class="modal">
-    <h2>Pembayaran Berhasil</h2>
-    <p>Pembayaran telah berhasil melalui Transfer atau QRIS.</p>
-    <button id="close-transfer-qris">Tutup</button>
-</div>
+    <div id="receipt-modal" class="modal">
+        <h2>Struk Pembayaran</h2>
+        <ul id="receipt-items"></ul>
+        <p>Total: Rp <span id="final-total"></span></p>
+        <button id="close-receipt">Tutup</button>
+    </div>
 
-<div id="receipt-modal" class="modal">
-    <h2>Struk Pembayaran</h2>
-    <ul id="receipt-items"></ul>
-    <p>Total: Rp <span id="final-total"></span></p>
-    <button id="close-receipt">Tutup</button>
-</div>
+    <footer>
+        <h2>Kontak Kami</h2>
+        <p>Email: <a href="mailto:tokorotiAromaBahagia@example.com">tokorotiAromaBahagia@example.com</a></p>
+        <p>Telepon: +62 812 3456 7890</p>
+    </footer>
 
-<footer>
-    <h2>Kontak Kami</h2>
-    <p>Email: <a href="mailto:tokorotiAromaBahagia@example.com">tokorotiAromaBahagia@example.com</a></p>
-    <p>Telepon: +62 812 3456 7890</p>
-</footer>
+    <script>
+        // Login functionality
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
-<script>
-    // Login functionality
-    document.getElementById('login-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-
-        if (username === "admin" && password === "1234") {
-            alert("Login berhasil!");
-            document.getElementById('login-section').style.display = 'none';
-            document.getElementById('produk').style.display = 'block';
-            document.getElementById('keranjang').style.display = 'block';
-            document.getElementById('cart-icon').style.display = 'block';
-        } else {
-            alert("Username atau password salah!");
-        }
-    });
-
-    // Add to cart functionality
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', function() {
-            const name = this.getAttribute('data-name');
-            const price = parseInt(this.getAttribute('data-price'));
-
-            const cartItems = document.getElementById('cart-items');
-            const li = document.createElement('li');
-            li.textContent = `${name} - Rp${price.toLocaleString('id-ID')}`;
-            cartItems.appendChild(li);
-
-            const totalElement = document.getElementById('total');
-            const currentTotal = parseInt(totalElement.textContent.replace(/\D/g, '')) || 0;
-            totalElement.textContent = (currentTotal + price).toLocaleString('id-ID');
-
-            alert(`${name} berhasil ditambahkan ke keranjang!`);
+            if (username === "admin" && password === "1234") {
+                alert("Login berhasil!");
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('produk').style.display = 'block';
+                document.getElementById('keranjang').style.display = 'block';
+                document.getElementById('cart-icon').style.display = 'block';
+            } else {
+                alert("Username atau password salah!");
+            }
         });
-    });
 
-    // Show payment modal
-    document.getElementById('cart-icon').addEventListener('click', function() {
-        const cartItems = document.getElementById('cart-items').innerHTML;
-        const total = document.getElementById('total').textContent;
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const name = this.getAttribute('data-name');
+                const price = parseInt(this.getAttribute('data-price'), 10);
+                const cartItems = document.getElementById('cart-items');
+                const totalElem = document.getElementById('total');
 
-        if (!cartItems.trim()) {
-            alert("Keranjang belanja kosong!");
-            return;
-        }
+                // Tambah produk ke daftar keranjang
+                const li = document.createElement('li');
+                li.textContent = `${name} - Rp${price.toLocaleString('id-ID')}`;
+                cartItems.appendChild(li);
 
-        document.getElementById('payment-items').innerHTML = cartItems;
-        document.getElementById('payment-total').textContent = total;
-        document.getElementById('payment-modal').style.display = 'block';
-    });
+                // Update total
+                const currentTotal = parseInt(totalElem.textContent.replace(/\D/g, ''), 10) || 0;
+                totalElem.textContent = (currentTotal + price).toLocaleString('id-ID');
+            });
+        });
 
-    // Close modals
-    document.getElementById('close-payment').addEventListener('click', function() {
-        document.getElementById('payment-modal').style.display = 'none';
-    });
+        // Checkout functionality
+        document.getElementById('checkout-button').addEventListener('click', function() {
+            const cartItems = document.getElementById('cart-items').cloneNode(true);
+            const total = document.getElementById('total').textContent;
 
-    document.getElementById('close-receipt').addEventListener('click', function() {
-        document.getElementById('receipt-modal').style.display = 'none';
-    });
-    // Handle "Bayar Sekarang" button click
-document.getElementById('pay-now').addEventListener('click', function() {
-    const paymentMethod = prompt("Pilih metode pembayaran:\n1. Cash\n2. Transfer\n3. QRIS");
+            // Tampilkan daftar produk di modal pembayaran
+            const paymentItems = document.getElementById('payment-items');
+            paymentItems.innerHTML = '';
+            cartItems.querySelectorAll('li').forEach(item => {
+                paymentItems.appendChild(item.cloneNode(true));
+            });
 
-    if (paymentMethod === "1") {
-        document.getElementById('payment-modal').style.display = 'none';
-        document.getElementById('cash-payment-modal').style.display = 'block';
-    } else if (paymentMethod === "2" || paymentMethod === "3") {
-        document.getElementById('payment-modal').style.display = 'none';
-        document.getElementById('transfer-qris-payment-modal').style.display = 'block';
-    } else if (!paymentMethod) {
-        alert("Anda belum memilih metode pembayaran.");
-    } else {
-        alert("Pilihan tidak valid. Silakan coba lagi.");
-    }
-});
-document.getElementById('pay-now').addEventListener('click', function() {
-    const paymentMethod = prompt("Pilih metode pembayaran:\n1. Cash\n2. Transfer\n3. QRIS");
+            document.getElementById('payment-total').textContent = total;
+            document.getElementById('payment-modal').style.display = 'block';
+        });
 
-    // Validasi input pengguna
-    if (!paymentMethod) {
-        alert("Anda belum memilih metode pembayaran.");
-        return; // Keluar dari fungsi jika tidak ada pilihan
-    }
+        document.getElementById('pay-cash').addEventListener('click', function() {
+            document.getElementById('payment-modal').style.display = 'none';
+            document.getElementById('cash-payment-modal').style.display = 'block';
+        });
 
-    // Proses berdasarkan pilihan metode pembayaran
-    if (paymentMethod === "1") {
-        document.getElementById('payment-modal').style.display = 'none';
-        document.getElementById('cash-payment-modal').style.display = 'block';
-    } else if (paymentMethod === "2" || paymentMethod === "3") {
-        document.getElementById('payment-modal').style.display = 'none';
-        document.getElementById('transfer-qris-payment-modal').style.display = 'block';
-    } else {
-        alert("Pilihan tidak valid. Silakan coba lagi.");
-    }
-   if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then((registration) => {
-                        console.log('Service Worker terdaftar dengan sukses:', registration);
-                    })
-                    .catch((error) => {
-                        console.log('Pendaftaran Service Worker gagal:', error);
-                    });
+        document.getElementById('pay-transfer').addEventListener('click', function() {
+            document.getElementById('payment-modal').style.display = 'none';
+            document.getElementById('transfer-qris-payment-modal').style.display = 'block';
+        });
+
+        document.getElementById('process-cash-payment').addEventListener('click', function() {
+            const receivedMoney = parseInt(document.getElementById('received-money').value, 10);
+            const total = parseInt(document.getElementById('total').textContent.replace(/\D/g, ''), 10);
+
+            if (receivedMoney >= total) {
+                const change = receivedMoney - total;
+                document.getElementById('cash-change').textContent = `Kembalian: Rp${change.toLocaleString('id-ID')}`;
+                document.getElementById('cash-change').style.display = 'block';
+
+                // Reset keranjang
+                document.getElementById('cart-items').innerHTML = '';
+                document.getElementById('total').textContent = '0';
+
+                // Tampilkan struk pembayaran
+                document.getElementById('cash-payment-modal').style.display = 'none';
+                document.getElementById('receipt-modal').style.display = 'block';
+                document.getElementById('receipt-items').innerHTML = document.getElementById('payment-items').innerHTML;
+                document.getElementById('final-total').textContent = total.toLocaleString('id-ID');
+            } else {
+                alert("Uang yang diterima kurang!");
+            }
+        });
+
+        document.getElementById('close-cash-payment').addEventListener('click', function() {
+            document.getElementById('cash-payment-modal').style.display = 'none';
+        });
+
+        document.getElementById('close-transfer-qris').addEventListener('click', function() {
+            document.getElementById('transfer-qris-payment-modal').style.display = 'none';
+            // Reset keranjang
+            document.getElementById('cart-items').innerHTML = '';
+            document.getElementById('total').textContent = '0';
+        });
+
+        document.getElementById('close-receipt').addEventListener('click', function() {
+            document.getElementById('receipt-modal').style.display = 'none';
+        });
+
+        document.getElementById('close-payment').addEventListener('click', function() {
+            document.getElementById('payment-modal').style.display = 'none';
+        });
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').then(function(registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }).catch(function(error) {
+                console.log('ServiceWorker registration failed: ', error);
             });
         }
     </script>
