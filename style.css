@@ -111,10 +111,137 @@ img {
   max-width: 100%; /* Responsive images */
   height: auto;
 }
+#login-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Membuat tinggi elemen sama dengan tinggi layar */
+  background-color: #EAE1E1;
+}
 
+#login-section h2 {
+  color: #C06C84;
+  font-size: 24px;
+  margin-bottom: 20px; /* Jarak antara tulisan "Login" dan form */
+  text-align: center;
+}
+
+#login-form {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px 30px;
+  width: 300px;
+  text-align: center;
+}
+
+#login-form label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#login-form button {
+  background-color: #C06C84;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 100%;
+}
+
+#login-form button:hover {
+  background-color: #A8556A;
+}
+#keranjang {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto; /* Tengah secara horizontal */
+  height: 100vh; /* Buat tinggi sama dengan layar */
+}
+
+#keranjang h2 {
+  margin-bottom: 20px;
+}
+
+#keranjang ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  max-width: 400px;
+  text-align: left; /* Agar daftar item rata kiri */
+}
+
+#keranjang ul li {
+  margin-bottom: 10px;
+}
+#keranjang p {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#checkout-button {
+  background-color: #C06C84; /* Warna tombol tetap */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#checkout-button:hover {
+  background-color: #A8556A; /* Warna hover */
+}
+/* General styling */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header, footer {
+  padding: 20px;
+  text-align: center;
+}
+
+section {
+  padding: 20px;
+}
+
+/* Responsive styles */
 @media (max-width: 600px) {
-  #produk {
+  header h1 {
+      font-size: 20px;
+  }
+
+  .item {
+      display: flex;
       flex-direction: column;
       align-items: center;
+  }
+
+  #keranjang ul {
+      max-width: 90%;
+  }
+
+  #keranjang p, #checkout-button {
+      width: 90%;
   }
 }
