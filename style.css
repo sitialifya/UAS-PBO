@@ -1,233 +1,120 @@
+/* style.css */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #EAE1E1; /* Warna latar belakang */
-    color: #333; /* Warna teks */
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #EAE1E1;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
 
 header {
-    background-color: #C06C84; /* Warna header */
-    color: white;
-    padding: 20px;
-    text-align: center;
+  background-color: #C06C84;
+  color: white;
+  padding: 20px;
+  text-align: center;
 }
 
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh; /* Mengatur tinggi main agar berada di tengah */
+header h1 {
+  margin: 0;
+  font-size: 36px;
 }
 
-form {
-    background-color: #D5C3C3; /* Warna latar belakang form */
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+header p {
+  margin: 10px 0 0;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
+footer {
+  background-color: #C06C84;
+  color: white;
+  padding: 10px;
+  text-align: center;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #C06C84; /* Warna border input */
-    border-radius: 5px;
+footer h2, footer p {
+  margin: 5px 0;
+}
+
+footer a {
+  color: #EAE1E1;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.item {
+  background-color: #D5C3C3;
+  border: 1px solid #C06C84;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 15px;
+  text-align: center;
+}
+
+.item h3 {
+  color: #C06C84;
+  font-size: 20px;
+}
+
+.item p.price {
+  color: #333;
+  font-weight: bold;
+}
+
+.item button {
+  background-color: #C06C84;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.item button:hover {
+  background-color: #A8556A;
+}
+
+.modal {
+  background-color: #EAE1E1;
+}
+
+.modal h2 {
+  color: #C06C84;
 }
 
 button {
-    background-color: #C06C84; /* Warna tombol */
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
+  background-color: #C06C84;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #A05A6D; /* Warna tombol saat hover */
+  background-color: #A8556A;
 }
 
-#error-message {
-    color: red; /* Warna pesan kesalahan */
-    margin-top: 10px;
+/* Warna untuk link */
+a {
+  color: #C06C84;
+  text-decoration: none;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #EAE1E1; /* Background utama */
-    color: #333;
+a:hover {
+  text-decoration: underline;
+}
+img {
+  max-width: 100%; /* Responsive images */
+  height: auto;
 }
 
-header {
-    background-color: #C06C84; /* Header */
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-section {
-    padding: 20px;
-    text-align: center;
-}
-
-.produk {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.item {
-    background-color: #D5C3C3; /* Warna background item produk */
-    border: 1px solid #C06C84; /* Border item */
-    border-radius: 5px;
-    padding: 10px;
-    text-align: center;
-    width: 200px;
-}
-
-.item img {
-    max-width: 100%;
-    border-radius: 5px;
-}
-
-footer {
-    background-color: #C06C84; /* Footer */
-    color: white;
-    text-align: center;
-    padding: 10px;
-}
-#keranjang {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #f4f4f4;
-}
-
-#keranjang ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#keranjang ul li {
-    margin-bottom: 5px;
-}
-
-#bayar {
-    padding: 10px 20px;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-.modal {
-  display: none; /* Awalnya disembunyikan */
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #EAE1E1; /* Warna latar belakang modal */
-  padding: 20px;
-  border: 1px solid #D5C3C3; /* Warna border */
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  color: #C06C84; /* Warna teks */
-}
-#payment-modal, #receipt-modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #ddd;
-    z-index: 1000;
-}
-
-#payment-modal button, #receipt-modal button {
-    margin-top: 10px;
-    padding: 10px;
-    cursor: pointer;
-}
-/* Tambahkan ke dalam file CSS Anda */
-
-body {
-    font-family: Arial, sans-serif;
-}
-
-header {
-    text-align: center;
-    padding: 20px;
-    background-color: #C06C84;
-    color: white;
-}
-
-footer {
-    background-color: #f8f8f8;
-    padding: 10px;
-    text-align: center;
-}
-
-h1, h2 {
-    margin: 0;
-}
-
-.item {
-    width: 100%;
-    display: inline-block;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-.item img {
-    width: 100%;
-    height: auto;
-}
-/* Tambahkan atau perbaiki media queries untuk tampilan mobile */
-@media (max-width: 768px) {
-    .item {
-        width: 48%;
-        margin: 1%;
-    }
-
-    header h1 {
-        font-size: 24px;
-    }
-
-    footer {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    .item {
-        width: 100%;
-        margin: 0;
-    }
-
-    header h1 {
-        font-size: 20px;
-    }
+@media (max-width: 600px) {
+  #produk {
+      flex-direction: column;
+      align-items: center;
+  }
 }
